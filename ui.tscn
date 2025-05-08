@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://g87bmm5uj5nv"]
+
+[ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://cfl8ktt67bejy" path="res://controller.gd" id="1_m6e0p"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_m6e0p")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_fyqef")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ActionsMenu" type="HBoxContainer" parent="Control/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="AttackButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
+layout_mode = 2
+text = "ATTACK"
+
+[node name="SpellsButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
+layout_mode = 2
+text = "SPELLS"
+
+[node name="ItemsButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
+layout_mode = 2
+text = "ITEM"
+
+[node name="CoverButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
+layout_mode = 2
+text = "COVER"
+
+[node name="RunButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
+layout_mode = 2
+text = "RUN"
+
+[node name="ExitButton" type="Button" parent="Control/MarginContainer/Control"]
+layout_mode = 1
+offset_right = 8.0
+offset_bottom = 8.0
+text = "EXIT"
+
+[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/AttackButton" to="." method="_on_action_button_pressed" binds= [0]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/SpellsButton" to="." method="_on_action_button_pressed" binds= [1]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/ItemsButton" to="." method="_on_action_button_pressed" binds= [2]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/CoverButton" to="." method="_on_action_button_pressed" binds= [3]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/RunButton" to="." method="_on_action_button_pressed" binds= [4]]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1g8u7tv8i1cy"]
+
+[ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="1_7sqx0"]
+[ext_resource type="Script" uid="uid://07xqgo6whxt7" path="res://creature_panel.gd" id="2_2tgui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sqx0"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tgui"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_uoqpc"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_7sqx0")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_2tgui")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeds8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcolh"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="Theme" id="Theme_76sdl"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_oeds8")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_kcolh")
+
+[node name="CreaturePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+grow_horizontal = 2
+theme = ExtResource("1_7sqx0")
+script = ExtResource("2_2tgui")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_top = -18.0
+offset_right = 64.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HPBar" type="ProgressBar" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme = SubResource("Theme_uoqpc")
+max_value = 10.0
+step = 1.0
+value = 7.0
+show_percentage = false
+
+[node name="MPBar" type="ProgressBar" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme = SubResource("Theme_76sdl")
+max_value = 10.0
+step = 1.0
+value = 7.0
+show_percentage = false

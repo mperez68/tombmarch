@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://btqtt68efxryv"]
+
+[ext_resource type="Script" uid="uid://ciqsx8upry82a" path="res://weapon.gd" id="1_swcir"]
+
+[node name="Weapon" type="Node"]
+script = ExtResource("1_swcir")
+weapon_name = null
+hit_chance = null
+crit_chance = null
+damage_type = null
+min_damage = null
+max_damage = null
+has_secondary_damage = null
+secondary_type = null
+min_secondary_damage = null
+max_secondary_damage = null

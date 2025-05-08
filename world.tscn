@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://d040sfpg6svp1"]
+
+[ext_resource type="PackedScene" uid="uid://g87bmm5uj5nv" path="res://ui.tscn" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://cyocp536nyg5u" path="res://goblin.tscn" id="2_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://bjedvyv1riex3" path="res://orc.tscn" id="3_036b0"]
+[ext_resource type="PackedScene" uid="uid://cbjmwkfladkjt" path="res://warboss.tscn" id="4_dwbse"]
+[ext_resource type="PackedScene" uid="uid://lmc6snl6psei" path="res://fighter.tscn" id="5_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://b3p4h7a02ca5f" path="res://archer.tscn" id="6_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://oqmtarrehe6a" path="res://wizard.tscn" id="7_ioo17"]
+
+[node name="World" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_f3sb7")]
+
+[node name="Goblin" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_aqk2v")]
+position = Vector2(300, 154)
+max_hp = 3
+inventory = []
+
+[node name="Orc" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("3_036b0")]
+position = Vector2(569, 157)
+max_hp = 4
+inventory = []
+
+[node name="Warboss" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("4_dwbse")]
+position = Vector2(794, 157)
+inventory = []
+
+[node name="Fighter" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("5_pkg7o")]
+position = Vector2(356, 427)
+inventory = []
+
+[node name="Archer" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("6_gbfbk")]
+position = Vector2(622, 424)
+max_mp = 2
+inventory = []
+
+[node name="Wizard" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("7_ioo17")]
+position = Vector2(888, 436)
+max_mp = 4
+inventory = []
