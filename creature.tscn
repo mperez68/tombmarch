@@ -145,22 +145,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_rxhes"]
-resource_name = "selected"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.5),
-"transitions": PackedFloat32Array(1, 0.366021, 1),
-"update": 0,
-"values": [Vector2(3, 3), Vector2(3.5, 3.5), Vector2(3, 3)]
-}
-
 [sub_resource type="Animation" id="Animation_6rt7j"]
 resource_name = "idle_expended"
 length = 3.0
@@ -188,6 +172,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.509286, 0.509286, 0.509286, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rxhes"]
+resource_name = "selected"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.5),
+"transitions": PackedFloat32Array(1, 0.366021, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3.5, 3.5), Vector2(3, 3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rxhes"]

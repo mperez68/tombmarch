@@ -5,7 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://lrtfy4wvmttl" path="res://assets/sprites/fighter.png" id="2_rwhy3"]
 
 [node name="PlayerCreature" instance=ExtResource("1_qq7nx")]
+scale = Vector2(-1, 1)
 script = ExtResource("2_ja607")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_rwhy3")
+
+[node name="CreaturePanel" parent="." index="5"]
+offset_left = 32.0
+offset_right = 96.0
+scale = Vector2(-1, 1)

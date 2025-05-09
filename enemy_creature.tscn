@@ -5,6 +5,3 @@
 
 [node name="EnemyCreature" instance=ExtResource("1_2452g")]
 script = ExtResource("2_lm61s")
-
-[node name="Sprite2D" parent="." index="1"]
-flip_h = true
