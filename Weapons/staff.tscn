@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://clito8b15040k"]
+
+[ext_resource type="PackedScene" uid="uid://btqtt68efxryv" path="res://Weapons/weapon.tscn" id="1_5wl5i"]
+
+[node name="Staff" instance=ExtResource("1_5wl5i")]
+weapon_name = "Staff"
+crit_chance = 0.1
+crit_multiplier = 3.0
+damage_type = 2
+max_damage = 1
+has_secondary_damage = true
+secondary_type = 3
+min_secondary_damage = 2
+max_secondary_damage = 3

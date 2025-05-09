@@ -1,5 +1,7 @@
 class_name Creature extends Area2D
 
+const floating_label = preload("res://UI/floating_text_label.tscn")
+
 enum Type{ SLASHING, PIERCING, BLUDGEONING, BURNING, CHILLING, SHOCKING }
 enum Status{ READY, EXPENDED }
 
@@ -28,20 +30,23 @@ func _ready() -> void:
 
 # Public
 func attack(target: Creature):
+	var temp = floating_label.instantiate()
+	temp.position = target.position - (temp.size / 2)
 	anim.play("attack")
-	target._damage(1, 0)
-	return				# TODO
 	if (weapon.get_hit()):
 		var is_crit = weapon.get_crit()
 		if (is_crit):
-			print("Crit")
-		else:
-			print("Hit")
-		target._damage(weapon.get_damage(is_crit), weapon.damage_type)
+			temp.self_modulate = Color.RED
+		var dmg = weapon.get_damage(is_crit)
+		target._damage(dmg, weapon.damage_type)
+		temp.text = str(dmg)
 		if (weapon.has_secondary_damage):
-			target._damage(weapon.get_secondary_damage(is_crit), weapon.damage_type)
+			var secondary_dmg = weapon.get_secondary_damage(is_crit)
+			target._damage(secondary_dmg, weapon.damage_type)
+			temp.text += str(" + ", secondary_dmg)
 	else:
-		print("Miss")
+		temp.text = "Miss"
+	add_sibling(temp)
 
 func cast(target: Creature):
 	pass

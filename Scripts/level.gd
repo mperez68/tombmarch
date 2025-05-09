@@ -28,11 +28,15 @@ func _ready() -> void:
 func pass_turn():
 	for creature in creatures[active]:
 		creature.reset()
-	active = (active + 1) % Turn.size()
+	# Increment to next valid actor
+	active = ((active + 1) % Turn.size()) as Turn
 	while creatures[active].size() == 0:
-		active = (active + 1) % Turn.size()
+		active = ((active + 1) % Turn.size()) as Turn
+	# Take Turn
 	if active == Turn.PLAYER:
 		PlayerController.change_state(PlayerController.Select.NO_ACTIVE)
+		for creature in creatures[Turn.PLAYER]:
+			creature.anim.play("selected")
 	else:
 		PlayerController.change_state(PlayerController.Select.DISABLED)
 		AiController.enqueue(creatures[active])

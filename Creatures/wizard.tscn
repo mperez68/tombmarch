@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://oqmtarrehe6a"]
 
-[ext_resource type="PackedScene" uid="uid://dq8jg6njmugtr" path="res://player_creature.tscn" id="1_xxhrx"]
+[ext_resource type="PackedScene" uid="uid://dq8jg6njmugtr" path="res://Creatures/player_creature.tscn" id="1_xxhrx"]
 [ext_resource type="Texture2D" uid="uid://cbdu46oxqlk34" path="res://assets/sprites/wizard.png" id="2_34mad"]
-[ext_resource type="Script" uid="uid://d0pshon5h8xqn" path="res://wizard.gd" id="2_xo1iy"]
+[ext_resource type="Script" uid="uid://d0pshon5h8xqn" path="res://Scripts/wizard.gd" id="2_xo1iy"]
 
 [node name="Wizard" instance=ExtResource("1_xxhrx")]
 script = ExtResource("2_xo1iy")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpxax5avqimgb"]
+
+[ext_resource type="Script" uid="uid://0y5x310jl3c5" path="res://scripts/floating_text_label.gd" id="1_7m7lk"]
+
+[sub_resource type="Theme" id="Theme_7m7lk"]
+RichTextLabel/constants/outline_size = 10
+
+[node name="FloatingTextLabel" type="RichTextLabel"]
+z_index = 1
+offset_left = -50.0
+offset_top = -25.0
+offset_right = 50.0
+offset_bottom = 25.0
+theme = SubResource("Theme_7m7lk")
+bbcode_enabled = true
+text = "[font_size=32]TEXT[/font_size]"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_7m7lk")
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

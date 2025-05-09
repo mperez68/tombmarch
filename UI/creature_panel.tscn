@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b1g8u7tv8i1cy"]
 
 [ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="1_7sqx0"]
-[ext_resource type="Script" uid="uid://07xqgo6whxt7" path="res://creature_panel.gd" id="2_2tgui"]
+[ext_resource type="Script" uid="uid://07xqgo6whxt7" path="res://Scripts/creature_panel.gd" id="2_2tgui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sqx0"]
 bg_color = Color(0, 0, 0, 1)

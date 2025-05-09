@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbjmwkfladkjt"]
 
-[ext_resource type="PackedScene" uid="uid://dyde6w2mwdjwp" path="res://enemy_creature.tscn" id="1_63hfa"]
-[ext_resource type="Script" uid="uid://bwf2y07ed4e53" path="res://warboss.gd" id="2_6xr1k"]
+[ext_resource type="PackedScene" uid="uid://dyde6w2mwdjwp" path="res://Creatures/enemy_creature.tscn" id="1_63hfa"]
+[ext_resource type="Script" uid="uid://bwf2y07ed4e53" path="res://Scripts/warboss.gd" id="2_6xr1k"]
 [ext_resource type="Texture2D" uid="uid://c8boamwq5wt3q" path="res://assets/sprites/bigorc.png" id="3_w7k12"]
 
 [node name="Warboss" instance=ExtResource("1_63hfa")]

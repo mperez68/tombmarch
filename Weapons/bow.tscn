@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmxgmju88tilq"]
+
+[ext_resource type="PackedScene" uid="uid://btqtt68efxryv" path="res://Weapons/weapon.tscn" id="1_qsk8x"]
+
+[node name="Bow" instance=ExtResource("1_qsk8x")]
+weapon_name = "Bow"
+hit_chance = 0.8
+crit_multiplier = 3.0
+damage_type = 1
+min_damage = 2

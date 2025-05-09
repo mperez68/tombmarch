@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyocp536nyg5u"]
-
-[ext_resource type="PackedScene" uid="uid://dyde6w2mwdjwp" path="res://enemy_creature.tscn" id="1_dl46o"]
-[ext_resource type="Script" uid="uid://cky413mo7ayq" path="res://goblin.gd" id="2_u6mjv"]
-
-[node name="Goblin" instance=ExtResource("1_dl46o")]
-script = ExtResource("2_u6mjv")

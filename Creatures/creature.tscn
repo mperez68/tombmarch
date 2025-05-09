@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmt4lmdjvgu2y"]
+[gd_scene load_steps=15 format=3 uid="uid://bmt4lmdjvgu2y"]
 
 [ext_resource type="Texture2D" uid="uid://diq0ydwll32bn" path="res://assets/sprites/goblin.png" id="1_fd6ru"]
-[ext_resource type="Script" uid="uid://dkomr3l2h31eg" path="res://creature.gd" id="1_nugsn"]
+[ext_resource type="Script" uid="uid://dkomr3l2h31eg" path="res://Scripts/creature.gd" id="1_nugsn"]
 [ext_resource type="Texture2D" uid="uid://btja6qcj833gx" path="res://assets/sprites/highlight.png" id="3_1k0n7"]
-[ext_resource type="PackedScene" uid="uid://b1g8u7tv8i1cy" path="res://creature_panel.tscn" id="4_w7hms"]
+[ext_resource type="PackedScene" uid="uid://b1g8u7tv8i1cy" path="res://UI/creature_panel.tscn" id="4_w7hms"]
+[ext_resource type="PackedScene" uid="uid://bfbwna608n2jb" path="res://Weapons/fists.tscn" id="5_frg5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fd6ru"]
 size = Vector2(32, 32)
@@ -213,8 +214,9 @@ _data = {
 &"selected": SubResource("Animation_rxhes")
 }
 
-[node name="Creature" type="Area2D" node_paths=PackedStringArray("inventory")]
+[node name="Creature" type="Area2D" node_paths=PackedStringArray("weapon", "inventory")]
 script = ExtResource("1_nugsn")
+weapon = NodePath("Fists")
 inventory = [null]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -249,6 +251,8 @@ texture = ExtResource("3_1k0n7")
 [node name="CreaturePanel" parent="." instance=ExtResource("4_w7hms")]
 offset_top = -32.0
 offset_bottom = -32.0
+
+[node name="Fists" parent="." instance=ExtResource("5_frg5k")]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

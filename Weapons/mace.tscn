@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp28tsrrqmjkk"]
+
+[ext_resource type="PackedScene" uid="uid://btqtt68efxryv" path="res://Weapons/weapon.tscn" id="1_3v0ja"]
+
+[node name="Mace" instance=ExtResource("1_3v0ja")]
+weapon_name = "Mace"
+hit_chance = 0.7
+crit_chance = 0.4
+damage_type = 2
+min_damage = 2
+max_damage = 3

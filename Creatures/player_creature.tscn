@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dq8jg6njmugtr"]
 
-[ext_resource type="PackedScene" uid="uid://bmt4lmdjvgu2y" path="res://creature.tscn" id="1_qq7nx"]
-[ext_resource type="Script" uid="uid://8vc2f3j2w1vc" path="res://player_creature.gd" id="2_ja607"]
+[ext_resource type="PackedScene" uid="uid://bmt4lmdjvgu2y" path="res://Creatures/creature.tscn" id="1_qq7nx"]
+[ext_resource type="Script" uid="uid://8vc2f3j2w1vc" path="res://Scripts/player_creature.gd" id="2_ja607"]
 [ext_resource type="Texture2D" uid="uid://lrtfy4wvmttl" path="res://assets/sprites/fighter.png" id="2_rwhy3"]
 
 [node name="PlayerCreature" instance=ExtResource("1_qq7nx")]

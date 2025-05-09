@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://lmc6snl6psei"]
-
-[ext_resource type="PackedScene" uid="uid://dq8jg6njmugtr" path="res://player_creature.tscn" id="1_efvb3"]
-[ext_resource type="Script" uid="uid://5bfqt3htkki0" path="res://fighter.gd" id="2_umvcx"]
-
-[node name="Fighter" instance=ExtResource("1_efvb3")]
-script = ExtResource("2_umvcx")

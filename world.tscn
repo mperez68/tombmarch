@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://d040sfpg6svp1"]
+[gd_scene load_steps=13 format=4 uid="uid://d040sfpg6svp1"]
 
-[ext_resource type="PackedScene" uid="uid://g87bmm5uj5nv" path="res://ui.tscn" id="1_f3sb7"]
-[ext_resource type="Script" uid="uid://c8cpd46eywvkx" path="res://level.gd" id="1_ioo17"]
-[ext_resource type="PackedScene" uid="uid://cyocp536nyg5u" path="res://goblin.tscn" id="2_aqk2v"]
-[ext_resource type="PackedScene" uid="uid://bjedvyv1riex3" path="res://orc.tscn" id="3_036b0"]
-[ext_resource type="PackedScene" uid="uid://cbjmwkfladkjt" path="res://warboss.tscn" id="4_dwbse"]
-[ext_resource type="PackedScene" uid="uid://lmc6snl6psei" path="res://fighter.tscn" id="5_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://b3p4h7a02ca5f" path="res://archer.tscn" id="6_gbfbk"]
-[ext_resource type="PackedScene" uid="uid://oqmtarrehe6a" path="res://wizard.tscn" id="7_ioo17"]
+[ext_resource type="PackedScene" uid="uid://g87bmm5uj5nv" path="res://UI/ui.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://c8cpd46eywvkx" path="res://Scripts/level.gd" id="1_ioo17"]
+[ext_resource type="PackedScene" uid="uid://cyocp536nyg5u" path="res://Creatures/goblin.tscn" id="2_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://lmc6snl6psei" path="res://Creatures/fighter.tscn" id="5_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://b3p4h7a02ca5f" path="res://Creatures/archer.tscn" id="6_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://bp28tsrrqmjkk" path="res://Weapons/mace.tscn" id="6_ioo17"]
+[ext_resource type="PackedScene" uid="uid://oqmtarrehe6a" path="res://Creatures/wizard.tscn" id="7_ioo17"]
 [ext_resource type="Texture2D" uid="uid://bu5bquetxlsfo" path="res://assets/isometricdungeon.png" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://bmxgmju88tilq" path="res://Weapons/bow.tscn" id="8_wse8f"]
+[ext_resource type="PackedScene" uid="uid://clito8b15040k" path="res://Weapons/staff.tscn" id="10_ic0uy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ioo17"]
 texture = ExtResource("8_gbfbk")
@@ -71,36 +72,46 @@ script = ExtResource("1_ioo17")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD5/wgAAQAAAAAAAAD5/wkAAQAAAAAAAAD5/woAAQAAAAIAAAD5/wsAAQAAAAAAAAD5/wwAAQAAAAAAAAD5/w0AAQAAAAAAAAD5/w4AAQAAAAAAAAD5/w8AAQAAAAAAAAD5/xAAAQABAAEAAAD5/xEAAQAAAAAAAAD5/xIAAQAAAAAAAAD6/wgAAQAAAAAAAAD6/wkAAQAAAAAAAAD6/woAAQAAAAAAAAD6/wsAAQAAAAAAAAD6/wwAAQABAAEAAAD6/w0AAQAAAAAAAAD6/w4AAQABAAAAAAD6/w8AAQAAAAAAAAD6/xAAAQAAAAAAAAD6/xEAAQAAAAAAAAD6/xIAAQAAAAEAAAD7/wgAAQAAAAAAAAD7/wkAAQAAAAAAAAD7/woAAQAAAAIAAAD7/wsAAQAAAAAAAAD7/wwAAQAAAAAAAAD7/w0AAQAAAAEAAAD7/w4AAQAAAAAAAAD7/w8AAQAAAAAAAAD7/xAAAQAAAAAAAAD7/xEAAQAAAAAAAAD7/xIAAQAAAAAAAAD8/wgAAQAAAAAAAAD8/wkAAQAAAAAAAAD8/woAAQAAAAAAAAD8/wsAAQABAAAAAAD8/wwAAQAAAAAAAAD8/w0AAQAAAAAAAAD8/w4AAQAAAAEAAAD8/w8AAQAAAAAAAAD8/xAAAQAAAAAAAAD8/xEAAQAAAAAAAAD8/xIAAQAAAAAAAAD9/wgAAQABAAAAAAD9/wkAAQAAAAAAAAD9/woAAQAAAAAAAAD9/wsAAQAAAAAAAAD9/wwAAQAAAAEAAAD9/w0AAQAAAAEAAAD9/w4AAQAAAAAAAAD9/w8AAQAAAAAAAAD9/xAAAQAAAAAAAAD9/xEAAQABAAAAAAD9/xIAAQAAAAAAAAD+/wgAAQAAAAAAAAD+/wkAAQAAAAIAAAD+/woAAQAAAAAAAAD+/wsAAQAAAAEAAAD+/wwAAQAAAAAAAAD+/w0AAQAAAAAAAAD+/w4AAQAAAAEAAAD+/w8AAQAAAAIAAAD+/xAAAQAAAAAAAAD+/xEAAQABAAIAAAD+/xIAAQAAAAAAAAD//wgAAQAAAAAAAAD//wkAAQAAAAIAAAD//woAAQAAAAEAAAD//wsAAQAAAAAAAAD//wwAAQAAAAAAAAD//w0AAQAAAAEAAAD//w4AAQAAAAAAAAD//w8AAQAAAAEAAAD//xAAAQABAAIAAAD//xEAAQABAAAAAAD//xIAAQABAAAAAAAAAAgAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAoAAQAAAAIAAAAAAAsAAQAAAAAAAAAAAAwAAQAAAAAAAAAAAA0AAQAAAAAAAAAAAA4AAQAAAAAAAAAAAA8AAQAAAAAAAAAAABAAAQABAAAAAAAAABEAAQAAAAEAAAAAABIAAQAAAAAAAAABAAgAAQAAAAAAAAABAAkAAQAAAAAAAAABAAoAAQAAAAAAAAABAAsAAQAAAAAAAAABAAwAAQAAAAAAAAABAA0AAQAAAAEAAAABAA4AAQAAAAAAAAABAA8AAQABAAIAAAABABAAAQAAAAAAAAABABEAAQAAAAAAAAABABIAAQAAAAAAAAACAAgAAQAAAAAAAAACAAkAAQAAAAAAAAACAAoAAQAAAAEAAAACAAsAAQAAAAEAAAACAAwAAQAAAAAAAAACAA0AAQAAAAIAAAACAA4AAQAAAAAAAAACAA8AAQAAAAEAAAACABAAAQAAAAEAAAACABEAAQAAAAAAAAACABIAAQAAAAAAAAADAAgAAQAAAAAAAAADAAkAAQAAAAEAAAADAAoAAQAAAAAAAAADAAsAAQAAAAAAAAADAAwAAQAAAAIAAAADAA0AAQAAAAAAAAADAA4AAQAAAAAAAAADAA8AAQAAAAAAAAADABAAAQAAAAIAAAADABEAAQAAAAEAAAADABIAAQAAAAAAAAAEAAgAAQAAAAMAAAAEAAkAAQAAAAMAAAAEAAoAAQAAAAMAAAAEAAsAAQAAAAMAAAAEAAwAAQAAAAMAAAAEAA0AAQAAAAMAAAAEAA4AAQAAAAMAAAAEAA8AAQAAAAMAAAAEABAAAQAAAAMAAAAEABEAAQAAAAMAAAAEABIAAQAAAAMAAAD5/wcAAQABAAMAAAD6/wcAAQABAAMAAAD7/wcAAQABAAMAAAD8/wcAAQABAAMAAAD9/wcAAQABAAMAAAD+/wcAAQABAAMAAAD//wcAAQABAAMAAAAAAAcAAQABAAMAAAABAAcAAQABAAMAAAACAAcAAQABAAMAAAADAAcAAQABAAMAAAA=")
+tile_map_data = PackedByteArray("AAD5/wgAAQAAAAAAAAD5/wkAAQAAAAAAAAD5/woAAQAAAAIAAAD5/wsAAQAAAAAAAAD5/wwAAQAAAAAAAAD5/w0AAQAAAAAAAAD5/w4AAQAAAAAAAAD5/w8AAQAAAAAAAAD5/xAAAQABAAEAAAD5/xEAAQAAAAAAAAD5/xIAAQAAAAAAAAD6/wgAAQAAAAAAAAD6/wkAAQAAAAAAAAD6/woAAQAAAAAAAAD6/wsAAQAAAAAAAAD6/wwAAQABAAEAAAD6/w0AAQAAAAAAAAD6/w4AAQABAAAAAAD6/w8AAQAAAAAAAAD6/xAAAQAAAAAAAAD6/xEAAQAAAAAAAAD6/xIAAQAAAAEAAAD7/wgAAQAAAAAAAAD7/wkAAQAAAAAAAAD7/woAAQAAAAIAAAD7/wsAAQAAAAAAAAD7/wwAAQAAAAAAAAD7/w0AAQAAAAEAAAD7/w4AAQAAAAAAAAD7/w8AAQAAAAAAAAD7/xAAAQAAAAAAAAD7/xEAAQAAAAAAAAD7/xIAAQAAAAAAAAD8/wgAAQAAAAAAAAD8/wkAAQAAAAAAAAD8/woAAQAAAAAAAAD8/wsAAQABAAAAAAD8/wwAAQAAAAAAAAD8/w0AAQAAAAAAAAD8/w4AAQAAAAEAAAD8/w8AAQAAAAAAAAD8/xAAAQAAAAAAAAD8/xEAAQAAAAAAAAD8/xIAAQAAAAAAAAD9/wgAAQABAAAAAAD9/wkAAQAAAAAAAAD9/woAAQAAAAAAAAD9/wsAAQAAAAAAAAD9/wwAAQAAAAEAAAD9/w0AAQAAAAEAAAD9/w4AAQAAAAAAAAD9/w8AAQAAAAAAAAD9/xAAAQAAAAAAAAD9/xEAAQABAAAAAAD9/xIAAQAAAAAAAAD+/wgAAQAAAAAAAAD+/wkAAQAAAAIAAAD+/woAAQAAAAAAAAD+/wsAAQAAAAEAAAD+/wwAAQAAAAAAAAD+/w0AAQAAAAAAAAD+/w4AAQAAAAEAAAD+/w8AAQAAAAIAAAD+/xAAAQAAAAAAAAD+/xEAAQABAAIAAAD+/xIAAQAAAAAAAAD//wgAAQAAAAAAAAD//wkAAQAAAAIAAAD//woAAQAAAAEAAAD//wsAAQAAAAAAAAD//wwAAQAAAAAAAAD//w0AAQAAAAEAAAD//w4AAQAAAAAAAAD//w8AAQAAAAEAAAD//xAAAQABAAIAAAD//xEAAQABAAAAAAD//xIAAQABAAAAAAAAAAgAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAoAAQAAAAIAAAAAAAsAAQAAAAAAAAAAAAwAAQAAAAAAAAAAAA0AAQAAAAAAAAAAAA4AAQAAAAAAAAAAAA8AAQAAAAAAAAAAABAAAQABAAAAAAAAABEAAQAAAAEAAAAAABIAAQAAAAAAAAABAAgAAQAAAAAAAAABAAkAAQAAAAAAAAABAAoAAQAAAAAAAAABAAsAAQAAAAAAAAABAAwAAQAAAAAAAAABAA0AAQAAAAEAAAABAA4AAQAAAAAAAAABAA8AAQABAAIAAAABABAAAQAAAAAAAAABABEAAQAAAAAAAAABABIAAQAAAAAAAAACAAgAAQAAAAAAAAACAAkAAQAAAAAAAAACAAoAAQAAAAEAAAACAAsAAQAAAAEAAAACAAwAAQAAAAAAAAACAA0AAQAAAAIAAAACAA4AAQAAAAAAAAACAA8AAQAAAAEAAAACABAAAQAAAAEAAAACABEAAQAAAAAAAAACABIAAQAAAAAAAAADAAgAAQAAAAAAAAADAAkAAQAAAAEAAAADAAoAAQAAAAAAAAADAAsAAQAAAAAAAAADAAwAAQAAAAIAAAADAA0AAQAAAAAAAAADAA4AAQAAAAAAAAADAA8AAQAAAAAAAAADABAAAQAAAAIAAAADABEAAQAAAAEAAAADABIAAQAAAAAAAAAEAAgAAQACAAMAAAAEAAkAAQAAAAMAAAAEAAoAAQACAAMAAAAEAAsAAQAAAAMAAAAEAAwAAQAAAAMAAAAEAA0AAQAAAAMAAAAEAA4AAQAAAAMAAAAEAA8AAQACAAMAAAAEABAAAQACAAMAAAAEABEAAQAAAAMAAAAEABIAAQAAAAMAAAD5/wcAAQABAAMAAAD6/wcAAQADAAMAAAD7/wcAAQABAAMAAAD8/wcAAQABAAMAAAD9/wcAAQABAAMAAAD+/wcAAQADAAMAAAD//wcAAQABAAMAAAAAAAcAAQABAAMAAAABAAcAAQADAAMAAAACAAcAAQABAAMAAAADAAcAAQABAAMAAAA=")
 tile_set = SubResource("TileSet_pkg7o")
 
 [node name="UI" parent="." instance=ExtResource("1_f3sb7")]
 
 [node name="Goblin" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_aqk2v")]
-position = Vector2(909, 321)
+position = Vector2(867, 341)
 max_hp = 3
 inventory = []
 
-[node name="Orc" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("3_036b0")]
-position = Vector2(771, 249)
-max_hp = 4
+[node name="Goblin2" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_aqk2v")]
+position = Vector2(573, 198)
+max_hp = 3
 inventory = []
 
-[node name="Warboss" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("4_dwbse")]
-position = Vector2(610, 175)
+[node name="Goblin3" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_aqk2v")]
+position = Vector2(760, 250)
+max_hp = 3
 inventory = []
 
-[node name="Fighter" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("5_pkg7o")]
-position = Vector2(245, 370)
+[node name="Fighter" parent="." node_paths=PackedStringArray("weapon", "inventory") instance=ExtResource("5_pkg7o")]
+position = Vector2(288, 338)
+weapon = NodePath("Mace")
 inventory = []
 
-[node name="Archer" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("6_gbfbk")]
+[node name="Mace" parent="Fighter" instance=ExtResource("6_ioo17")]
+
+[node name="Archer" parent="." node_paths=PackedStringArray("weapon", "inventory") instance=ExtResource("6_gbfbk")]
 position = Vector2(381, 441)
+weapon = NodePath("Bow")
 inventory = []
 
-[node name="Wizard" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("7_ioo17")]
-position = Vector2(525, 513)
+[node name="Bow" parent="Archer" instance=ExtResource("8_wse8f")]
+
+[node name="Wizard" parent="." node_paths=PackedStringArray("weapon", "inventory") instance=ExtResource("7_ioo17")]
+position = Vector2(572, 493)
+weapon = NodePath("Staff")
 inventory = []
+
+[node name="Staff" parent="Wizard" instance=ExtResource("10_ic0uy")]
 
 [node name="TurnPassTimer" type="Timer" parent="."]
 wait_time = 2.0

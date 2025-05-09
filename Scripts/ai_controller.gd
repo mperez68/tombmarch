@@ -10,8 +10,9 @@ var players: Array
 
 func enqueue(creatures: Array):
 	queue.append_array(creatures)
+	queue.shuffle()
 	if state == State.IDLE:
-		start()
+		timer.start()
 
 func start():
 	# End engine if queue is empty
@@ -28,7 +29,7 @@ func start():
 			return
 		temp = queue.pop_front()
 	
-	temp.attack(players.pick_random())
+	temp.attack(players.pick_random())	# TODO make decisions
 	temp.expend()
 	
 	# Pause for player reading
