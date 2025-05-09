@@ -1,1 +1,1 @@
-class_name Spell extends Node
+class_name Spell extends Node 

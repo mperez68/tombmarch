@@ -30,6 +30,8 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="ActionsMenu" type="HBoxContainer" parent="Control/MarginContainer/Control"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -71,3 +73,4 @@ text = "EXIT"
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/ItemsButton" to="." method="_on_action_button_pressed" binds= [2]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/CoverButton" to="." method="_on_action_button_pressed" binds= [3]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/RunButton" to="." method="_on_action_button_pressed" binds= [4]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ExitButton" to="." method="_on_exit_button_pressed"]

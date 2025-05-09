@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmt4lmdjvgu2y"]
+[gd_scene load_steps=14 format=3 uid="uid://bmt4lmdjvgu2y"]
 
 [ext_resource type="Texture2D" uid="uid://diq0ydwll32bn" path="res://assets/sprites/goblin.png" id="1_fd6ru"]
 [ext_resource type="Script" uid="uid://dkomr3l2h31eg" path="res://creature.gd" id="1_nugsn"]
@@ -113,7 +113,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(16, 32)]
+"values": [Vector2(0, 0), Vector2(48, 32)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -161,6 +161,35 @@ tracks/0/keys = {
 "values": [Vector2(3, 3), Vector2(3.5, 3.5), Vector2(3, 3)]
 }
 
+[sub_resource type="Animation" id="Animation_6rt7j"]
+resource_name = "idle_expended"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.509286, 0.509286, 0.509286, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rxhes"]
 _data = {
 &"RESET": SubResource("Animation_nugsn"),
@@ -168,6 +197,7 @@ _data = {
 &"damage": SubResource("Animation_fd6ru"),
 &"die": SubResource("Animation_w7hms"),
 &"idle": SubResource("Animation_frg5k"),
+&"idle_expended": SubResource("Animation_6rt7j"),
 &"selected": SubResource("Animation_rxhes")
 }
 
@@ -211,3 +241,4 @@ offset_bottom = -32.0
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
