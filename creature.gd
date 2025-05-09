@@ -3,6 +3,8 @@ class_name Creature extends Area2D
 enum Type{ SLASHING, PIERCING, BLUDGEONING, BURNING, CHILLING, SHOCKING }
 enum Status{ READY, EXPENDED }
 
+signal expend_character
+
 @onready var hl = $Highlight
 @onready var hover = $Hover
 @onready var anim = $AnimationPlayer
@@ -58,6 +60,15 @@ func is_dead() -> bool:
 
 func select(new_state: bool = !hl.visible):
 	hl.visible = new_state
+
+func expend():
+	status = Status.EXPENDED
+	expend_character.emit()
+
+func reset():
+	status = Status.READY
+	anim.play("idle")
+
 
 # Private
 func _damage(value: int, type: Type):

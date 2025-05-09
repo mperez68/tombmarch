@@ -14,8 +14,6 @@ var target_limit: int = 0
 # Public
 func select(target: Creature):
 	match (select_state):
-		Select.DISABLED:
-			pass
 		Select.NO_ACTIVE:
 			if target.is_player and target.status == Creature.Status.READY:
 				active = target
@@ -56,6 +54,7 @@ func _select_targets(target: Creature):
 		if targets.size() == target_limit:
 			for t in targets:
 				active.attack(t)	# TODO appropriate chosen action
-			active.status = Creature.Status.EXPENDED
+			var temp = active
 			change_state(Select.NO_ACTIVE)
 			set_ui.emit(false)
+			temp.expend()
