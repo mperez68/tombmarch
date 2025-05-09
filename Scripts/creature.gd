@@ -19,12 +19,13 @@ signal expend_character
 @export var weapon: Weapon
 @export var armor: Node
 @export var inventory: Array[Node] = []
+@export var is_player: bool = false
 
 var status: Status = Status.READY
-var is_player: bool = false
 
 # Engine
 func _ready() -> void:
+	anim.seek(randf_range(0,4))
 	panel.set_bars(self)
 
 
@@ -87,13 +88,14 @@ func _damage(value: int, type: Type):
 		_die()
 
 func _die():
+	hover.visible = false
 	panel.visible = false
 	anim.play("die")
 
 
 # Events
 func _on_mouse_entered() -> void:
-	hover.visible = true
+	hover.visible = !is_dead()
 
 func _on_mouse_exited() -> void:
 	hover.visible = false

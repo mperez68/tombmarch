@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b1g8u7tv8i1cy" path="res://UI/creature_panel.tscn" id="4_w7hms"]
 [ext_resource type="PackedScene" uid="uid://bfbwna608n2jb" path="res://Weapons/fists.tscn" id="5_frg5k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fd6ru"]
-size = Vector2(32, 32)
-
 [sub_resource type="Animation" id="Animation_nugsn"]
 length = 0.001
 tracks/0/type = "value"
@@ -131,7 +128,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_frg5k"]
 resource_name = "idle"
-length = 3.0
+length = 4.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -140,10 +137,10 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.46667, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -160,7 +157,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_6rt7j"]
 resource_name = "idle_expended"
-length = 3.0
+length = 4.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -169,10 +166,10 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.46667, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 2), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -214,19 +211,13 @@ _data = {
 &"selected": SubResource("Animation_rxhes")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fd6ru"]
+size = Vector2(32, 32)
+
 [node name="Creature" type="Area2D" node_paths=PackedStringArray("weapon", "inventory")]
 script = ExtResource("1_nugsn")
 weapon = NodePath("Fists")
 inventory = [null]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-scale = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_fd6ru")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("1_fd6ru")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -234,23 +225,34 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_fd6ru")
+offset = Vector2(0, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -31)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_fd6ru")
+
 [node name="Highlight" type="Sprite2D" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0.607843)
-position = Vector2(0, 16)
+position = Vector2(0, -31)
 scale = Vector2(4, 4)
 texture = ExtResource("3_1k0n7")
 
 [node name="Hover" type="Sprite2D" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0.392157)
-position = Vector2(0, 16)
+position = Vector2(0, -31)
 scale = Vector2(4, 4)
 texture = ExtResource("3_1k0n7")
 
 [node name="CreaturePanel" parent="." instance=ExtResource("4_w7hms")]
-offset_top = -32.0
-offset_bottom = -32.0
+offset_top = -79.0
+offset_bottom = -79.0
 
 [node name="Fists" parent="." instance=ExtResource("5_frg5k")]
 

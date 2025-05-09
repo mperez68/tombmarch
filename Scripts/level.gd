@@ -2,12 +2,14 @@ extends Node2D
 
 enum Turn{ NONE, PLAYER, MOBS, BOSS, ENVIRONMENT }
 
+const PLAYER_LINE: Array[Vector2] = [ Vector2(-5.0, 9.0), Vector2(-5.0, 16.0) ]
+const ENEMY_LINE: Array[Vector2] = [ Vector2(1.0, 11.0), Vector2(1.0, 17.0) ]
+
 @onready var pass_timer = $TurnPassTimer
 
 var active: Turn = Turn.NONE
 
 var creatures: Dictionary
-
 
 # Engine
 func _ready() -> void:

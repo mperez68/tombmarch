@@ -7,7 +7,7 @@ class_name Weapon extends Node
 @export_group("Primary Damage")
 @export var damage_type: Creature.Type
 @export_range(0, 999, 1, "or_greater") var min_damage: int = 1
-@export_range(1, 999, 1, "or_greater") var max_damage: int = 2
+@export_range(0, 999, 1, "or_greater") var max_damage: int = 2
 @export_group("Secondary Damage")
 @export var has_secondary_damage: bool
 @export var secondary_type: Creature.Type

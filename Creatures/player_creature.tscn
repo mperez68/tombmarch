@@ -7,6 +7,7 @@
 [node name="PlayerCreature" instance=ExtResource("1_qq7nx")]
 scale = Vector2(-1, 1)
 script = ExtResource("2_ja607")
+is_player = true
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_rwhy3")

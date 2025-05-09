@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://7i7kldekhndd"]
+
+[ext_resource type="Script" uid="uid://bev3ya0jwmxh0" path="res://Scripts/item_manager.gd" id="1_uh13p"]
+[ext_resource type="PackedScene" uid="uid://bmxgmju88tilq" path="res://Weapons/bow.tscn" id="2_10egk"]
+[ext_resource type="PackedScene" uid="uid://bp28tsrrqmjkk" path="res://Weapons/mace.tscn" id="3_e5dng"]
+[ext_resource type="PackedScene" uid="uid://clito8b15040k" path="res://Weapons/staff.tscn" id="4_66dn6"]
+
+[node name="ItemManager" type="Node"]
+script = ExtResource("1_uh13p")
+
+[node name="Bow" parent="." instance=ExtResource("2_10egk")]
+
+[node name="Mace" parent="." instance=ExtResource("3_e5dng")]
+
+[node name="Staff" parent="." instance=ExtResource("4_66dn6")]

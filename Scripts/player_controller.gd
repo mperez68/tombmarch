@@ -24,6 +24,9 @@ func select(target: Creature):
 				actor = target
 				actor.anim.play("selected")
 		Select.TARGET:
+			if target.is_player:
+				change_state(Select.NO_ACTIVE, true)
+				select(target)
 			_select_targets(target)
 
 func clear():

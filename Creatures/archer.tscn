@@ -6,6 +6,8 @@
 
 [node name="Archer" instance=ExtResource("1_nsyys")]
 script = ExtResource("2_xnqie")
+max_hp = 8
+max_mp = 2
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_7oyl4")
