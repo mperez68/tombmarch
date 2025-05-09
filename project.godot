@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-TargetController="*res://target_controller.tscn"
+PlayerController="*res://player_controller.tscn"
+AiController="*res://ai_controller.tscn"
 
 [rendering]
 

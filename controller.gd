@@ -6,7 +6,7 @@ signal action_pressed(action: Actions)
 
 # Engine
 func _ready() -> void:
-	TargetController.set_ui.connect(_set_ui)
+	PlayerController.set_ui.connect(_set_ui)
 
 # Private
 func _set_ui(is_vis: bool):
@@ -18,7 +18,7 @@ func _on_action_button_pressed(action: Actions) -> void:
 	
 	match action:
 		Actions.ATTACK:
-			TargetController.change_state(TargetController.Select.TARGET, false, 1)
+			PlayerController.change_state(PlayerController.Select.TARGET, false, 1)
 
 
 func _on_exit_button_pressed() -> void:

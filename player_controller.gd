@@ -4,8 +4,7 @@ signal set_ui(visible: bool)
 
 enum Select{ DISABLED, NO_ACTIVE, ACTIVATED, TARGET }
 
-
-var active: Creature
+var actor: Creature
 var targets: Array[Creature]
 var select_state: Select = Select.NO_ACTIVE
 var target_limit: int = 0
@@ -16,21 +15,21 @@ func select(target: Creature):
 	match (select_state):
 		Select.NO_ACTIVE:
 			if target.is_player and target.status == Creature.Status.READY:
-				active = target
-				active.anim.play("selected")
+				actor = target
+				actor.anim.play("selected")
 				change_state(Select.ACTIVATED, false)
 				set_ui.emit(true)
 		Select.ACTIVATED:
 			if target.is_player and target.status == Creature.Status.READY:
-				active = target
-				active.anim.play("selected")
+				actor = target
+				actor.anim.play("selected")
 		Select.TARGET:
 			_select_targets(target)
 
 func clear():
 	for target in targets:
 		target.select(false)
-	active = null
+	actor = null
 	targets.clear()
 
 func change_state(new_state: Select, reset: bool = true, new_limit: int = 0):
@@ -53,8 +52,8 @@ func _select_targets(target: Creature):
 		# If limit reached, do action
 		if targets.size() == target_limit:
 			for t in targets:
-				active.attack(t)	# TODO appropriate chosen action
-			var temp = active
+				actor.attack(t)	# TODO appropriate chosen action
+			var temp = actor
 			change_state(Select.NO_ACTIVE)
 			set_ui.emit(false)
 			temp.expend()

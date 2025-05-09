@@ -20,6 +20,7 @@ func _ready() -> void:
 				creatures[Turn.PLAYER].push_back(child)
 			if child is EnemyCreature:
 				creatures[Turn.MOBS].push_back(child)
+	AiController.players = creatures[Turn.PLAYER]
 	pass_turn()
 
 
@@ -30,7 +31,11 @@ func pass_turn():
 	active = (active + 1) % Turn.size()
 	while creatures[active].size() == 0:
 		active = (active + 1) % Turn.size()
-	print(creatures[active])
+	if active == Turn.PLAYER:
+		PlayerController.change_state(PlayerController.Select.NO_ACTIVE)
+	else:
+		PlayerController.change_state(PlayerController.Select.DISABLED)
+		AiController.enqueue(creatures[active])
 
 # Signal
 func _check_turn():
@@ -38,4 +43,3 @@ func _check_turn():
 		if creature.status == Creature.Status.READY and !creature.is_dead():
 			return
 	pass_timer.start()
-	

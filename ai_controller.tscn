@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://chctfyd385vml"]
+
+[ext_resource type="Script" uid="uid://cvhku0ln4e3kh" path="res://ai_controller.gd" id="1_f2wl7"]
+
+[node name="AIController" type="Node"]
+script = ExtResource("1_f2wl7")
+
+[node name="PauseTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="PauseTimer" to="." method="start"]

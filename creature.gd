@@ -64,10 +64,13 @@ func select(new_state: bool = !hl.visible):
 func expend():
 	status = Status.EXPENDED
 	expend_character.emit()
+	if anim.current_animation == "idle":
+		anim.play("idle_expended")
 
 func reset():
-	status = Status.READY
-	anim.play("idle")
+	if !is_dead():
+		status = Status.READY
+		anim.play("idle")
 
 
 # Private
@@ -92,7 +95,7 @@ func _on_mouse_exited() -> void:
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		TargetController.select(self)
+		PlayerController.select(self)
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "die":

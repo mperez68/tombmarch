@@ -90,14 +90,17 @@ inventory = []
 position = Vector2(610, 175)
 inventory = []
 
-[node name="Fighter" parent="." instance=ExtResource("5_pkg7o")]
+[node name="Fighter" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("5_pkg7o")]
 position = Vector2(245, 370)
+inventory = []
 
-[node name="Archer" parent="." instance=ExtResource("6_gbfbk")]
+[node name="Archer" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("6_gbfbk")]
 position = Vector2(381, 441)
+inventory = []
 
-[node name="Wizard" parent="." instance=ExtResource("7_ioo17")]
+[node name="Wizard" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("7_ioo17")]
 position = Vector2(525, 513)
+inventory = []
 
 [node name="TurnPassTimer" type="Timer" parent="."]
 wait_time = 2.0
