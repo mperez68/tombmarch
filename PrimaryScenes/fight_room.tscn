@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=4 uid="uid://d040sfpg6svp1"]
 
-[ext_resource type="PackedScene" uid="uid://g87bmm5uj5nv" path="res://UI/ui.tscn" id="1_f3sb7"]
-[ext_resource type="Script" uid="uid://c8cpd46eywvkx" path="res://Scripts/level.gd" id="1_ioo17"]
-[ext_resource type="Texture2D" uid="uid://bu5bquetxlsfo" path="res://assets/isometricdungeon.png" id="8_gbfbk"]
+[ext_resource type="Script" uid="uid://c8cpd46eywvkx" path="res://Scripts/fight_room.gd" id="1_isr72"]
+[ext_resource type="Texture2D" uid="uid://bu5bquetxlsfo" path="res://assets/isometricdungeon.png" id="2_0k111"]
+[ext_resource type="PackedScene" uid="uid://g87bmm5uj5nv" path="res://UI/fight_room_ui.tscn" id="3_pdv3v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ioo17"]
-texture = ExtResource("8_gbfbk")
+texture = ExtResource("2_0k111")
 texture_region_size = Vector2i(32, 16)
 0:0/next_alternative_id = 3
 0:0/0 = 0
@@ -64,8 +64,8 @@ terrain_set_0/terrain_0/name = "Dungeon"
 terrain_set_0/terrain_0/color = Color(0.340339, 0.340339, 0.340339, 1)
 sources/1 = SubResource("TileSetAtlasSource_ioo17")
 
-[node name="World" type="Node2D"]
-script = ExtResource("1_ioo17")
+[node name="FightRoom" type="Node2D"]
+script = ExtResource("1_isr72")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
@@ -73,7 +73,7 @@ tile_map_data = PackedByteArray("AAASAAcAAQABAAIAAAASAAYAAQAAAAAAAAASAAUAAQAAAAA
 tile_set = SubResource("TileSet_pkg7o")
 metadata/_edit_lock_ = true
 
-[node name="UI" parent="." instance=ExtResource("1_f3sb7")]
+[node name="UI" parent="." instance=ExtResource("3_pdv3v")]
 
 [node name="TurnPassTimer" type="Timer" parent="."]
 wait_time = 2.0

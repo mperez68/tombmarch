@@ -51,7 +51,6 @@ func _ready() -> void:
 			float(i + 0.5) / float(creatures[Turn.BOSS].size()))
 		add_child(creatures[Turn.BOSS][i])
 	
-	creatures[Turn.PLAYER][0]._damage(10, 0)
 	pass_timer.start()
 
 

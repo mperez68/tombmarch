@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqj33xjfgxaa0"]
+
+[ext_resource type="Script" uid="uid://cxsvq6lju7rha" path="res://scripts/map_marker.gd" id="1_y877l"]
+[ext_resource type="Texture2D" uid="uid://chvheyrnj6cwy" path="res://assets/sprites/mapicons.png" id="1_ylycg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo208"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el0rm"]
+atlas = ExtResource("1_ylycg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_i3wx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_y877l"]
+resource_name = "hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.4, 0.5),
+"transitions": PackedFloat32Array(2, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.2, 1.2), Vector2(2, 2), Vector2(1.7, 1.7)]
+}
+
+[sub_resource type="Animation" id="Animation_ei3hs"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_4x6bc"]
+resource_name = "return"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.4, 0.5),
+"transitions": PackedFloat32Array(2, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1.7, 1.7), Vector2(2, 2), Vector2(1.2, 1.2), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei3hs"]
+_data = {
+&"RESET": SubResource("Animation_i3wx1"),
+&"hover": SubResource("Animation_y877l"),
+&"idle": SubResource("Animation_ei3hs"),
+&"return": SubResource("Animation_4x6bc")
+}
+
+[node name="MapMarker" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_y877l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yo208")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_el0rm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ei3hs")
+}
+autoplay = "RESET"
+next/hover = &"idle"
+blend_times = [&"hover", &"hover", 0.1, &"idle", &"hover", 0.2, &"idle", &"idle", 0.2]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
