@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Tombmarch"
 config/tags=PackedStringArray("proof_of_concept")
-run/main_scene="uid://d040sfpg6svp1"
+run/main_scene="uid://lvv38j7aexcs"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 PlayerController="*res://Globals/player_controller.tscn"
 AiController="*res://Globals/ai_controller.tscn"
 ItemManager="*res://Globals/item_manager.tscn"
+SceneManager="*res://Globals/scene_manager.tscn"
 
 [rendering]
 

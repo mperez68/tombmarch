@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dsu7cghvdnhur" path="res://Scripts/dungeon_map.gd" id="1_aroy7"]
 [ext_resource type="Texture2D" uid="uid://3x16w1q0fcv4" path="res://assets/dungeonmap.png" id="2_cs6h2"]
 [ext_resource type="PackedScene" uid="uid://b27muepwu4anj" path="res://Markers/player_marker.tscn" id="3_idwds"]
-[ext_resource type="Script" uid="uid://dr8mx3cs6yfpr" path="res://scripts/mob_info.gd" id="4_el0rm"]
+[ext_resource type="Script" uid="uid://dr8mx3cs6yfpr" path="res://Scripts/mob_info.gd" id="4_el0rm"]
 [ext_resource type="PackedScene" uid="uid://rjg2ent01j6p" path="res://Markers/room_marker.tscn" id="4_yo208"]
-[ext_resource type="Script" uid="uid://8adsdlcy2d0w" path="res://scripts/item_info.gd" id="5_0srt2"]
+[ext_resource type="Script" uid="uid://8adsdlcy2d0w" path="res://Scripts/item_info.gd" id="5_0srt2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idwds"]
 texture = ExtResource("2_cs6h2")

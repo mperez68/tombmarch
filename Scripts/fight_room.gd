@@ -16,12 +16,24 @@ var creatures: Dictionary
 
 # Engine
 func _ready() -> void:
-	# Populate lines # TODO access from singleton
-	creatures[Turn.NONE] = []
-	creatures[Turn.PLAYER] = [ preload("res://Creatures/fighter.tscn").instantiate(), preload("res://Creatures/archer.tscn").instantiate(), preload("res://Creatures/wizard.tscn").instantiate() ]
-	creatures[Turn.MOBS] = [ preload("res://Creatures/goblin.tscn").instantiate(), preload("res://Creatures/goblin.tscn").instantiate() ]
-	creatures[Turn.BOSS] = [ preload("res://Creatures/warboss.tscn").instantiate() ]
-	creatures[Turn.ENVIRONMENT] = []
+	# Initialize lists
+	for turn in Turn.size():
+		creatures[turn] = []
+	
+	# TODO pull from global data
+	creatures[Turn.PLAYER] = [
+		preload("res://Creatures/fighter.tscn").instantiate(),
+		preload("res://Creatures/archer.tscn").instantiate(),
+		preload("res://Creatures/wizard.tscn").instantiate(),
+	]
+	
+	# Populate lines
+	for mob in SceneManager.fight_info.mobs:
+		creatures[Turn.MOBS].push_front(mob.generate())
+	for boss in SceneManager.fight_info.boss_mobs:
+		creatures[Turn.BOSS].push_front(boss.generate())
+	
+	# Populate AI Controllers targets
 	AiController.players = creatures[Turn.PLAYER]
 	
 	# Line players
@@ -88,6 +100,11 @@ func _has_living(list: Array) -> bool:
 
 # Signal
 func _check_turn():
+	# Check if fight is over
+	if !_has_living(creatures[Turn.PLAYER]) or (!_has_living(creatures[Turn.MOBS]) and !_has_living(creatures[Turn.BOSS])):
+		SceneManager.end_fight()
+	
+	# Check if turn is over
 	for creature in creatures[active]:
 		if creature.status == Creature.Status.READY and !creature.is_dead():
 			return
