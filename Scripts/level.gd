@@ -26,6 +26,7 @@ func _ready() -> void:
 	
 	# Line players
 	for i in creatures[Turn.PLAYER].size():
+		creatures[Turn.PLAYER][i].expend_character.connect(_check_turn)
 		creatures[Turn.PLAYER][i].position = grid.scale * lerp(
 			grid.map_to_local(PLAYER_LINE[0]),
 			grid.map_to_local(PLAYER_LINE[1]),
@@ -34,6 +35,7 @@ func _ready() -> void:
 	
 	# Line mobs
 	for i in creatures[Turn.MOBS].size():
+		creatures[Turn.MOBS][i].expend_character.connect(_check_turn)
 		creatures[Turn.MOBS][i].position = grid.scale * lerp(
 			grid.map_to_local(ENEMY_LINE[0]),
 			grid.map_to_local(ENEMY_LINE[1]),
@@ -42,17 +44,15 @@ func _ready() -> void:
 	
 	# Line boss
 	for i in creatures[Turn.BOSS].size():
+		creatures[Turn.BOSS][i].expend_character.connect(_check_turn)
 		creatures[Turn.BOSS][i].position = grid.scale * lerp(
 			grid.map_to_local(BOSS_LINE[0]),
 			grid.map_to_local(BOSS_LINE[1]),
 			float(i + 0.5) / float(creatures[Turn.BOSS].size()))
 		add_child(creatures[Turn.BOSS][i])
 	
-	for child in get_children():
-		if child is Creature:
-			child.expend_character.connect(_check_turn)
-	
-	pass_turn()
+	creatures[Turn.PLAYER][0]._damage(10, 0)
+	pass_timer.start()
 
 
 # Public
@@ -69,7 +69,8 @@ func pass_turn():
 	if active == Turn.PLAYER:
 		PlayerController.change_state(PlayerController.Select.NO_ACTIVE)
 		for creature in creatures[Turn.PLAYER]:
-			creature.anim.play("selected")
+			if !creature.is_dead():
+				creature.anim.play("selected")
 	else:
 		if _has_living(creatures[active]):
 			PlayerController.change_state(PlayerController.Select.DISABLED)

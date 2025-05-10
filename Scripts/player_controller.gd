@@ -6,12 +6,14 @@ enum Select{ DISABLED, NO_ACTIVE, ACTIVATED, TARGET }
 
 var actor: Creature
 var targets: Array[Creature]
-var select_state: Select = Select.NO_ACTIVE
+var select_state: Select = Select.DISABLED
 var target_limit: int = 0
 
 
 # Public
 func select(target: Creature):
+	if target.is_dead():
+		return
 	match (select_state):
 		Select.NO_ACTIVE:
 			if target.is_player and target.status == Creature.Status.READY:
