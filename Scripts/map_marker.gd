@@ -13,6 +13,7 @@ const TEXTURES: Dictionary = {
 
 @export var mobs: Array[MobInfo]
 @export var boss_mobs: Array[MobInfo]
+@export var items: Array[ItemInfo]
 
 # Engine
 func _ready() -> void:
