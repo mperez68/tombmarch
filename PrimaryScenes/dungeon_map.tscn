@@ -231,7 +231,7 @@ tile_set = SubResource("TileSet_cs6h2")
 
 [node name="RoomMarker" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(593, 497)
-mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2"), SubResource("Resource_7ve8u")])
+mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2")])
 
 [node name="RoomMarker5" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(496, 497)

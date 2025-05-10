@@ -17,7 +17,21 @@ const TEXTURES: Dictionary = {
 
 # Engine
 func _ready() -> void:
-	$Sprite2D.texture.region = TEXTURES[icon]
+	change_type(icon)
+
+
+# Public
+func clear():
+	mobs.clear()
+	boss_mobs.clear()
+	items.clear()
+	change_type(Icon.COMPLETED_FIGHT)
+
+
+# Private
+func change_type(new_type: Icon):
+	icon = new_type
+	$Sprite2D.texture.region = TEXTURES[new_type]
 
 
 # Signals
