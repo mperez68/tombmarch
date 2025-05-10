@@ -2,46 +2,89 @@ extends Node2D
 
 enum Turn{ NONE, PLAYER, MOBS, BOSS, ENVIRONMENT }
 
-const PLAYER_LINE: Array[Vector2] = [ Vector2(-5.0, 9.0), Vector2(-5.0, 16.0) ]
-const ENEMY_LINE: Array[Vector2] = [ Vector2(1.0, 11.0), Vector2(1.0, 17.0) ]
+const PLAYER_LINE: Array[Vector2i] = [ Vector2i(9, 6), Vector2i(16, 6) ]
+const ENEMY_LINE: Array[Vector2i] = [ Vector2i(10, -2), Vector2i(17, -2) ]
+const BOSS_LINE: Array[Vector2i] = [ Vector2i(10, 0), Vector2i(17, 0) ]
 
-@onready var pass_timer = $TurnPassTimer
+@onready var pass_timer: Timer = $TurnPassTimer
+@onready var grid: TileMapLayer = $Terrain
 
 var active: Turn = Turn.NONE
 
 var creatures: Dictionary
 
+
 # Engine
 func _ready() -> void:
-	for t in Turn.size():
-		creatures[t] = []
+	# Populate lines # TODO access from singleton
+	creatures[Turn.NONE] = []
+	creatures[Turn.PLAYER] = [ preload("res://Creatures/fighter.tscn").instantiate(), preload("res://Creatures/archer.tscn").instantiate(), preload("res://Creatures/wizard.tscn").instantiate() ]
+	creatures[Turn.MOBS] = [ preload("res://Creatures/goblin.tscn").instantiate(), preload("res://Creatures/goblin.tscn").instantiate() ]
+	creatures[Turn.BOSS] = [ preload("res://Creatures/warboss.tscn").instantiate() ]
+	creatures[Turn.ENVIRONMENT] = []
+	AiController.players = creatures[Turn.PLAYER]
+	
+	# Line players
+	for i in creatures[Turn.PLAYER].size():
+		creatures[Turn.PLAYER][i].position = grid.scale * lerp(
+			grid.map_to_local(PLAYER_LINE[0]),
+			grid.map_to_local(PLAYER_LINE[1]),
+			float(i + 0.5) / float(creatures[Turn.PLAYER].size()))
+		add_child(creatures[Turn.PLAYER][i])
+	
+	# Line mobs
+	for i in creatures[Turn.MOBS].size():
+		creatures[Turn.MOBS][i].position = grid.scale * lerp(
+			grid.map_to_local(ENEMY_LINE[0]),
+			grid.map_to_local(ENEMY_LINE[1]),
+			float(i + 0.5) / float(creatures[Turn.MOBS].size()))
+		add_child(creatures[Turn.MOBS][i])
+	
+	# Line boss
+	for i in creatures[Turn.BOSS].size():
+		creatures[Turn.BOSS][i].position = grid.scale * lerp(
+			grid.map_to_local(BOSS_LINE[0]),
+			grid.map_to_local(BOSS_LINE[1]),
+			float(i + 0.5) / float(creatures[Turn.BOSS].size()))
+		add_child(creatures[Turn.BOSS][i])
+	
 	for child in get_children():
 		if child is Creature:
 			child.expend_character.connect(_check_turn)
-			if child is PlayerCreature:
-				creatures[Turn.PLAYER].push_back(child)
-			if child is EnemyCreature:
-				creatures[Turn.MOBS].push_back(child)
-	AiController.players = creatures[Turn.PLAYER]
+	
 	pass_turn()
 
 
 # Public
 func pass_turn():
 	for creature in creatures[active]:
-		creature.reset()
+		if !creature.is_dead():
+			creature.reset()
 	# Increment to next valid actor
 	active = ((active + 1) % Turn.size()) as Turn
 	while creatures[active].size() == 0:
 		active = ((active + 1) % Turn.size()) as Turn
+	
 	# Take Turn
 	if active == Turn.PLAYER:
 		PlayerController.change_state(PlayerController.Select.NO_ACTIVE)
 		for creature in creatures[Turn.PLAYER]:
 			creature.anim.play("selected")
 	else:
-		PlayerController.change_state(PlayerController.Select.DISABLED)
-		AiController.enqueue(creatures[active])
+		if _has_living(creatures[active]):
+			PlayerController.change_state(PlayerController.Select.DISABLED)
+			AiController.enqueue(creatures[active])
+		else:
+			pass_turn()
+
+
+# Private
+func _has_living(list: Array) -> bool:
+	for creature in list:
+		if !creature.is_dead():
+			return true
+	return false
+
 
 # Signal
 func _check_turn():
