@@ -4,3 +4,8 @@
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_1cvac")
+
+[node name="ChangeDelay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ChangeDelay" to="." method="_end_fight"]

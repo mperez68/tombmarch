@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var grid = $Map
 @onready var conceal_grid = $Concealment
-@onready var player = $PlayerMarker
+@onready var player: PlayerMarker = $PlayerMarker
 
 
 # Engine
@@ -17,7 +17,8 @@ func _ready() -> void:
 			child.grid_position = grid.local_to_map(child.position / grid.scale)
 			child.center()
 	# connect reveal, do initial reveal
-	player.position_updated.connect(_reveal)
+	if !player.position_updated.is_connected(_reveal):
+		player.position_updated.connect(_reveal)
 	_reveal(player.grid_position)
 
 func _unhandled_input(event: InputEvent) -> void:

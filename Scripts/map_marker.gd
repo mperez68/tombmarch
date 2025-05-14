@@ -35,8 +35,14 @@ func change_type(new_type: Icon):
 
 
 # Signals
-func _on_mouse_entered() -> void:
-	anim.play("hover")
+#func _on_mouse_entered() -> void:
+	#anim.play("hover")
+#
+#func _on_mouse_exited() -> void:
+	#anim.play("return")
 
-func _on_mouse_exited() -> void:
-	anim.play("return")
+
+# Engine
+#func _exit_tree():
+	#if mouse_entered.is_connected(_on_mouse_entered):
+		#mouse_entered.disconnect(_on_mouse_entered)

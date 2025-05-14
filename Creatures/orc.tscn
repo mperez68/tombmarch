@@ -7,6 +7,7 @@
 
 [node name="Orc" node_paths=PackedStringArray("weapon") instance=ExtResource("1_3xw0u")]
 script = ExtResource("2_kapy6")
+max_hp = 4
 weapon = NodePath("Spear")
 
 [node name="Sprite2D" parent="." index="1"]

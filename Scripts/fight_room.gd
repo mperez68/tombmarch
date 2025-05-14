@@ -20,12 +20,7 @@ func _ready() -> void:
 	for turn in Turn.size():
 		creatures[turn] = []
 	
-	# TODO pull from global data
-	creatures[Turn.PLAYER] = [
-		preload("res://Creatures/fighter.tscn").instantiate(),
-		preload("res://Creatures/archer.tscn").instantiate(),
-		preload("res://Creatures/wizard.tscn").instantiate(),
-	]
+	creatures[Turn.PLAYER] = PlayerManager.generate()
 	
 	# Populate lines
 	for mob in SceneManager.fight_info.mobs:
@@ -102,6 +97,7 @@ func _has_living(list: Array) -> bool:
 func _check_turn():
 	# Check if fight is over
 	if !_has_living(creatures[Turn.PLAYER]) or (!_has_living(creatures[Turn.MOBS]) and !_has_living(creatures[Turn.BOSS])):
+		PlayerManager.save(creatures[Turn.PLAYER])
 		SceneManager.end_fight()
 	
 	# Check if turn is over

@@ -35,6 +35,8 @@ func _on_move_timer_timeout() -> void:
 	state = State.READY
 	center()
 
+
+# Signals
 func _on_area_entered(area: Area2D) -> void:
 	if area is MapMarker and (area.mobs.size() > 0 or area.boss_mobs.size() > 0):
 		var temp = area.duplicate()

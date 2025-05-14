@@ -22,6 +22,7 @@ PlayerController="*res://Globals/player_controller.tscn"
 AiController="*res://Globals/ai_controller.tscn"
 ItemManager="*res://Globals/item_manager.tscn"
 SceneManager="*res://Globals/scene_manager.tscn"
+PlayerManager="*res://Globals/player_manager.tscn"
 
 [rendering]
 

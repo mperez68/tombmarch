@@ -12,10 +12,10 @@ signal expend_character
 @onready var anim = $AnimationPlayer
 @onready var panel = $CreaturePanel
 
-@export_range(1, 999, 1, "or_greater") var max_hp = 10
-@onready var hp = max_hp
-@export_range(0, 999, 1, "or_greater") var max_mp = 0
-@onready var mp = max_mp
+@export_range(1, 1, 1, "or_greater") var max_hp = 10
+var hp: int
+@export_range(0, 1, 1, "or_greater") var max_mp = 0
+var mp: int
 @export var weapon: Weapon
 @export var armor: Node
 @export var inventory: Array[Node] = []

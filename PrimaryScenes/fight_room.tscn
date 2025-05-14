@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=4 uid="uid://d040sfpg6svp1"]
+[gd_scene load_steps=8 format=4 uid="uid://d040sfpg6svp1"]
 
 [ext_resource type="Script" uid="uid://c8cpd46eywvkx" path="res://Scripts/fight_room.gd" id="1_isr72"]
 [ext_resource type="Texture2D" uid="uid://bu5bquetxlsfo" path="res://assets/isometricdungeon.png" id="2_0k111"]
 [ext_resource type="PackedScene" uid="uid://g87bmm5uj5nv" path="res://UI/fight_room_ui.tscn" id="3_pdv3v"]
+
+[sub_resource type="Gradient" id="Gradient_o2pcn"]
+colors = PackedColorArray(0.255659, 0.255659, 0.255659, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w3wbw"]
+gradient = SubResource("Gradient_o2pcn")
+fill_from = Vector2(0.106838, 1)
+fill_to = Vector2(0.717949, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ioo17"]
 texture = ExtResource("2_0k111")
@@ -66,6 +74,17 @@ sources/1 = SubResource("TileSetAtlasSource_ioo17")
 
 [node name="FightRoom" type="Node2D"]
 script = ExtResource("1_isr72")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_w3wbw")
 
 [node name="Terrain" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)

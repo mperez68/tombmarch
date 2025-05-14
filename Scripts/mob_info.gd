@@ -11,4 +11,6 @@ const MOB_SCENES: Dictionary = {
 }
 
 func generate() -> Node:
-	return MOB_SCENES[type].instantiate()
+	var ret = MOB_SCENES[type].instantiate()
+	ret.hp = ret.max_hp
+	return ret
