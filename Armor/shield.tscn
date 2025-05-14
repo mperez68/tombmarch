@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvsot21q0vgb8"]
+
+[ext_resource type="PackedScene" uid="uid://d3bnl08xikdgm" path="res://Armor/armor.tscn" id="1_p1f5c"]
+
+[node name="Shield" instance=ExtResource("1_p1f5c")]
+armor_name = "Shield"
+block_chance = 0.2

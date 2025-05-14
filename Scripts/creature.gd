@@ -23,6 +23,7 @@ var mp: int
 
 var status: Status = Status.READY
 
+
 # Engine
 func _ready() -> void:
 	anim.seek(randf_range(0,4))
@@ -80,7 +81,13 @@ func reset():
 
 
 # Private
-func _damage(value: int, type: Type):
+func _damage(value: int, type: Type, mortal: bool = false):
+	if !mortal and armor != null and armor.block():
+		var temp = floating_label.instantiate()
+		temp.position = position - (temp.size / 2)
+		temp.text = "Block"
+		add_sibling(temp)
+		return
 	anim.play("damage")
 	hp -= value
 	panel.set_hp(hp)

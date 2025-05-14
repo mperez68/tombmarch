@@ -12,6 +12,7 @@ const PLAYER_SCENES: Dictionary = {
 @export var player_class: PlayerClass
 @export_range(1, 1, 1.0, "or_greater") var experience_level: int
 @export var equipped_weapon: WeaponInfo
+@export var equipped_armor: ArmorInfo
 
 var initialized: bool = false
 var hp: int
@@ -29,6 +30,8 @@ func generate() -> Node:
 	# Equipment
 	ret.weapon = equipped_weapon.generate()
 	ret.add_child(ret.weapon)
+	ret.armor = equipped_armor.generate()
+	ret.add_child(ret.armor)
 	return ret
 
 func save(player: PlayerCreature) -> void:

@@ -1,8 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bha3sqhlplbav"]
+[gd_scene load_steps=8 format=3 uid="uid://bha3sqhlplbav"]
 
 [ext_resource type="Script" uid="uid://6weyyl0mlt8n" path="res://Scripts/player_manager.gd" id="1_y2kgy"]
-[ext_resource type="Script" uid="uid://3yx5kqngf1n7" path="res://scripts/player_info.gd" id="2_q2eqt"]
+[ext_resource type="Script" uid="uid://3yx5kqngf1n7" path="res://Scripts/player_info.gd" id="2_q2eqt"]
+[ext_resource type="Script" uid="uid://mekefqdhip6c" path="res://Scripts/armor_info.gd" id="3_3s7hr"]
 [ext_resource type="Script" uid="uid://dshr3ojhu4w2b" path="res://Scripts/weapon_info.gd" id="3_nuiqv"]
+
+[sub_resource type="Resource" id="Resource_brn22"]
+script = ExtResource("3_3s7hr")
+armor_type = 0
+armor_name = ""
+level = 3
+enhancement = 0
+metadata/_custom_type_script = "uid://mekefqdhip6c"
 
 [sub_resource type="Resource" id="Resource_nuiqv"]
 script = ExtResource("3_nuiqv")
@@ -14,10 +23,11 @@ metadata/_custom_type_script = "uid://dshr3ojhu4w2b"
 
 [sub_resource type="Resource" id="Resource_q2eqt"]
 script = ExtResource("2_q2eqt")
-display_name = ""
+display_name = "Amos"
 player_class = 0
 experience_level = 0
 equipped_weapon = SubResource("Resource_nuiqv")
+equipped_armor = SubResource("Resource_brn22")
 metadata/_custom_type_script = "uid://3yx5kqngf1n7"
 
 [node name="PlayerManager" type="Node"]
