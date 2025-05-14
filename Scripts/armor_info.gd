@@ -12,14 +12,13 @@ const BASE_REFERENCES: Dictionary = {
 @export_range(0, 3) var level: int
 @export var enhancement: Enhancements
 
-
 func generate() -> Node:
 	var ret: Armor = BASE_REFERENCES[armor_type].instantiate()
 	
 	if !armor_name.is_empty():
 		ret.armor_name = armor_name
 	
-	ret.block_chance += float(level) / 20.0
+	ret.block_chance += 0.1 * level
 	
 	match enhancement:
 		Enhancements.SPIKED:

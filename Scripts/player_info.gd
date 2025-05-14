@@ -28,10 +28,12 @@ func generate() -> Node:
 	else:
 		ret.hp = ret.max_hp
 	# Equipment
-	ret.weapon = equipped_weapon.generate()
-	ret.add_child(ret.weapon)
-	ret.armor = equipped_armor.generate()
-	ret.add_child(ret.armor)
+	if is_instance_valid(equipped_weapon):
+		ret.weapon = equipped_weapon.generate()
+		ret.add_child(ret.weapon)
+	if is_instance_valid(equipped_armor):
+		ret.armor = equipped_armor.generate()
+		ret.add_child(ret.armor)
 	return ret
 
 func save(player: PlayerCreature) -> void:
