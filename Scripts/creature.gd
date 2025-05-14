@@ -1,7 +1,9 @@
 class_name Creature extends Area2D
 
+const MAX_STAT: int = 10
 const floating_label = preload("res://UI/floating_text_label.tscn")
 
+enum Stats{ STRENGTH, AGILITY, INTELLIGENCE }
 enum Type{ SLASHING, PIERCING, BLUDGEONING, BURNING, CHILLING, SHOCKING }
 enum Status{ READY, EXPENDED }
 
@@ -12,14 +14,20 @@ signal expend_character
 @onready var anim = $AnimationPlayer
 @onready var panel = $CreaturePanel
 
+@export var display_name: String = "CREATURE"
+@export var is_player: bool = false
+@export_group("Stats")
 @export_range(1, 1, 1, "or_greater") var max_hp = 10
 var hp: int
 @export_range(0, 1, 1, "or_greater") var max_mp = 0
 var mp: int
+@export_range(0, MAX_STAT, 1, "hide_slider") var strength: int
+@export_range(0, MAX_STAT, 1, "hide_slider") var agility: int
+@export_range(0, MAX_STAT, 1, "hide_slider") var intelligence: int
+@export_group("Equipment")
 @export var weapon: Weapon
 @export var armor: Node
 @export var inventory: Array[Node] = []
-@export var is_player: bool = false
 
 var status: Status = Status.READY
 
@@ -35,15 +43,15 @@ func attack(target: Creature):
 	var temp = floating_label.instantiate()
 	temp.position = target.position - (temp.size / 2)
 	anim.play("attack")
-	if (weapon.get_hit()):
-		var is_crit = weapon.get_crit()
+	if (weapon.get_hit(_get_modifier())):
+		var is_crit = weapon.get_crit(agility)
 		if (is_crit):
 			temp.self_modulate = Color.RED
-		var dmg = weapon.get_damage(is_crit)
+		var dmg = weapon.get_damage(is_crit, _get_modifier())
 		target._damage(dmg, weapon.damage_type)
 		temp.text = str(dmg)
 		if (weapon.has_secondary_damage):
-			var secondary_dmg = weapon.get_secondary_damage(is_crit)
+			var secondary_dmg = weapon.get_secondary_damage(is_crit, _get_modifier(false))
 			target._damage(secondary_dmg, weapon.damage_type)
 			temp.text += str(" + ", secondary_dmg)
 	else:
@@ -93,6 +101,19 @@ func _damage(value: int, type: Type, mortal: bool = false):
 	panel.set_hp(hp)
 	if is_dead():
 		_die()
+
+func _get_modifier(is_primary = true) -> int:
+	var check = weapon.primary_stat
+	if !is_primary:
+		check = weapon.secondary_stat
+	match check:
+		Stats.STRENGTH:
+			return strength
+		Stats.AGILITY:
+			return agility
+		Stats.INTELLIGENCE:
+			return intelligence
+	return 0
 
 func _die():
 	hover.visible = false

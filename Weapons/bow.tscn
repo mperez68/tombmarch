@@ -4,7 +4,8 @@
 
 [node name="Bow" instance=ExtResource("1_qsk8x")]
 weapon_name = "Bow"
-hit_chance = 0.8
+primary_stat = 1
+hit_chance = 0.6
 crit_multiplier = 3.0
 damage_type = 1
 min_damage = 2

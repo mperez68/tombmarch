@@ -4,3 +4,4 @@
 
 [node name="Weapon" type="Node"]
 script = ExtResource("1_swcir")
+secondary_stat = 2

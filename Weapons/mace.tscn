@@ -4,7 +4,6 @@
 
 [node name="Mace" instance=ExtResource("1_3v0ja")]
 weapon_name = "Mace"
-hit_chance = 0.7
 crit_chance = 0.4
 damage_type = 2
 min_damage = 2

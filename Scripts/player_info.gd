@@ -16,6 +16,7 @@ const PLAYER_SCENES: Dictionary = {
 
 var initialized: bool = false
 var hp: int
+var mp: int
 var inventory: Array[ItemInfo]
 
 
@@ -25,8 +26,10 @@ func generate() -> Node:
 	# Initial data set
 	if initialized:
 		ret.hp = hp
+		ret.mp = mp
 	else:
 		ret.hp = ret.max_hp
+		ret.mp = ret.max_mp
 	# Equipment
 	if is_instance_valid(equipped_weapon):
 		ret.weapon = equipped_weapon.generate()
@@ -39,3 +42,4 @@ func generate() -> Node:
 func save(player: PlayerCreature) -> void:
 	initialized = true
 	hp = player.hp
+	mp = player.mp

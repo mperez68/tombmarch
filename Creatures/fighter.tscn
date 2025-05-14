@@ -5,3 +5,4 @@
 
 [node name="Fighter" instance=ExtResource("1_efvb3")]
 script = ExtResource("2_umvcx")
+strength = 1.0
