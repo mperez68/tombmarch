@@ -194,6 +194,7 @@ metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
 [sub_resource type="Resource" id="Resource_f388l"]
 script = ExtResource("5_0srt2")
 type = 0
+value = 0
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
 [sub_resource type="Resource" id="Resource_el0rm"]
@@ -204,6 +205,7 @@ metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
 [sub_resource type="Resource" id="Resource_mk3xh"]
 script = ExtResource("5_0srt2")
 type = 0
+value = 0
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
 [sub_resource type="Resource" id="Resource_1l082"]
@@ -219,11 +221,13 @@ metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
 [sub_resource type="Resource" id="Resource_fw6wo"]
 script = ExtResource("5_0srt2")
 type = 0
+value = 0
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
 [sub_resource type="Resource" id="Resource_axino"]
 script = ExtResource("5_0srt2")
 type = 1
+value = 0
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
 [node name="DungeonMap" type="Node2D"]

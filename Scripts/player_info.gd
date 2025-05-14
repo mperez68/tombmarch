@@ -10,21 +10,25 @@ const PLAYER_SCENES: Dictionary = {
 
 @export var display_name: String
 @export var player_class: PlayerClass
-@export_range(1, 1, 1.0, "or_greater") var experience: int
+@export_range(1, 1, 1.0, "or_greater") var experience_level: int
+@export var equipped_weapon: WeaponInfo
 
 var initialized: bool = false
 var hp: int
 var inventory: Array[ItemInfo]
-var equipped_weapon: ItemInfo
 
 
 # Public
 func generate() -> Node:
-	var ret = PLAYER_SCENES[player_class].instantiate()
+	var ret: PlayerCreature = PLAYER_SCENES[player_class].instantiate()
+	# Initial data set
 	if initialized:
 		ret.hp = hp
 	else:
 		ret.hp = ret.max_hp
+	# Equipment
+	ret.weapon = equipped_weapon.generate()
+	ret.add_child(ret.weapon)
 	return ret
 
 func save(player: PlayerCreature) -> void:
