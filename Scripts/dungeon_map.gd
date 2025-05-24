@@ -35,6 +35,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if direction != Vector2i.ZERO:
 		player.move_to_position(direction)
 
+func _enter_tree() -> void:
+	MusicManager.play(MusicManager.Song.DUNGEON)
+
 
 # Private
 func _reveal(grid_position: Vector2i):

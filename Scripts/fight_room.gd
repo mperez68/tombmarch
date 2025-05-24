@@ -60,6 +60,8 @@ func _ready() -> void:
 	
 	pass_timer.start()
 
+func _enter_tree() -> void:
+	MusicManager.play(MusicManager.Song.FIGHT)
 
 # Public
 func pass_turn():

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://yg3iohbniaah"]
+
+[ext_resource type="Script" uid="uid://c6s4l88nvfoyp" path="res://scripts/music_manager.gd" id="1_75ytp"]
+[ext_resource type="AudioStream" uid="uid://lk2kbhwkiic8" path="res://assets/audio/ambient_dungeon-70bpm.wav" id="2_caoax"]
+[ext_resource type="AudioStream" uid="uid://dojgbgthghivu" path="res://assets/audio/combat-130bpm.wav" id="3_hwxqs"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_75ytp")
+
+[node name="Dungeon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_caoax")
+bus = &"Music"
+
+[node name="Fight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hwxqs")
