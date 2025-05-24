@@ -2,6 +2,8 @@ class_name Controller extends CanvasLayer
 
 enum Actions{ ATTACK, CAST, ITEM, RUN }
 
+@onready var sfx = $SfxManager
+
 signal action_pressed(action: Actions)
 
 # Engine
@@ -15,7 +17,7 @@ func _set_ui(is_vis: bool):
 # Events
 func _on_action_button_pressed(action: Actions) -> void:
 	action_pressed.emit(action)
-	
+	sfx.play(sfx.Sfx.CLICK)
 	match action:
 		Actions.ATTACK:
 			PlayerController.change_state(PlayerController.Select.TARGET, false, 1)

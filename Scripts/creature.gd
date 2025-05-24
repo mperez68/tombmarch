@@ -13,6 +13,7 @@ signal expend_character
 @onready var hover = $Hover
 @onready var anim = $AnimationPlayer
 @onready var panel = $CreaturePanel
+@onready var sfx = $SfxManager
 
 @export var display_name: String = "CREATURE"
 @export var is_player: bool = false
@@ -54,8 +55,10 @@ func attack(target: Creature):
 			var secondary_dmg = weapon.get_secondary_damage(is_crit, _get_modifier(false))
 			target._damage(secondary_dmg, weapon.damage_type)
 			temp.text += str(" + ", secondary_dmg)
+		sfx.play(sfx.Sfx.HIT)
 	else:
 		temp.text = "Miss"
+		sfx.play(sfx.Sfx.MISS)
 	add_sibling(temp)
 
 func cast(target: Creature):
@@ -97,6 +100,7 @@ func _damage(value: int, type: Type, mortal: bool = false):
 		add_sibling(temp)
 		return
 	anim.play("damage")
+	sfx.play(sfx.Sfx.DAMAGE)
 	hp -= value
 	panel.set_hp(hp)
 	if is_dead():
@@ -119,6 +123,7 @@ func _die():
 	hover.visible = false
 	panel.visible = false
 	anim.play("die")
+	sfx.play(sfx.Sfx.DEATH)
 
 
 # Events

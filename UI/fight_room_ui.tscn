@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://g87bmm5uj5nv"]
+[gd_scene load_steps=4 format=3 uid="uid://g87bmm5uj5nv"]
 
 [ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://cfl8ktt67bejy" path="res://Scripts/fight_controller.gd" id="1_m6e0p"]
+[ext_resource type="PackedScene" uid="uid://c1p0bv38efl15" path="res://UI/sfx_manager.tscn" id="3_1cjj4"]
 
 [node name="FightController" type="CanvasLayer"]
 script = ExtResource("1_m6e0p")
@@ -71,6 +72,8 @@ layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 text = "EXIT"
+
+[node name="SfxManager" parent="." instance=ExtResource("3_1cjj4")]
 
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/AttackButton" to="." method="_on_action_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/SpellsButton" to="." method="_on_action_button_pressed" binds= [1]]

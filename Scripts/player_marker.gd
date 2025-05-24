@@ -8,6 +8,7 @@ var state = State.READY
 
 @onready var pause: Timer = $PauseTimer
 @onready var timer: Timer = $MoveTimer
+@onready var move_sfx: AudioStreamPlayer = $Move
 
 
 # Public
@@ -17,6 +18,7 @@ func move_to_position(direction: Vector2i):
 	
 	if state == State.READY:
 		state = State.MOVING
+		move_sfx.play()
 		grid_position += direction
 		if conceal_grid.get_cell_tile_data(grid_position) != null:
 			pause.start()

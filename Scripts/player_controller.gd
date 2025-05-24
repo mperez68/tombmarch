@@ -4,6 +4,8 @@ signal set_ui(visible: bool)
 
 enum Select{ DISABLED, NO_ACTIVE, ACTIVATED, TARGET }
 
+@onready var sfx = $SfxManager
+
 var actor: Creature
 var targets: Array[Creature]
 var select_state: Select = Select.DISABLED
@@ -19,12 +21,14 @@ func select(target: Creature):
 			if target.is_player and target.status == Creature.Status.READY:
 				actor = target
 				actor.anim.play("selected")
+				sfx.play(sfx.Sfx.DOUBLE_CLICK)
 				change_state(Select.ACTIVATED, false)
 				set_ui.emit(true)
 		Select.ACTIVATED:
 			if target.is_player and target.status == Creature.Status.READY:
 				actor = target
 				actor.anim.play("selected")
+				sfx.play(sfx.Sfx.DOUBLE_CLICK)
 		Select.TARGET:
 			if target.is_player:
 				change_state(Select.NO_ACTIVE, true)
@@ -51,6 +55,7 @@ func _select_targets(target: Creature):
 	if targets.has(target):
 		targets.remove_at(targets.find(target))
 		target.select(false)
+		sfx.play(sfx.Sfx.CLICK)
 	elif targets.size() < target_limit and !target.is_player and !target.is_dead():
 		targets.push_front(target)
 		target.select(true)
@@ -62,3 +67,5 @@ func _select_targets(target: Creature):
 			change_state(Select.NO_ACTIVE)
 			set_ui.emit(false)
 			temp.expend()
+		else:
+			sfx.play(sfx.Sfx.CLICK)
