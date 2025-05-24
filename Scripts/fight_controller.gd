@@ -1,4 +1,4 @@
-class_name Controller extends CanvasLayer
+class_name FightController extends CanvasLayer
 
 enum Actions{ ATTACK, CAST, ITEM, RUN }
 

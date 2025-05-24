@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://lvv38j7aexcs"]
+[gd_scene load_steps=17 format=4 uid="uid://lvv38j7aexcs"]
 
 [ext_resource type="Script" uid="uid://dsu7cghvdnhur" path="res://Scripts/dungeon_map.gd" id="1_aroy7"]
+[ext_resource type="PackedScene" uid="uid://cypou16by8ik3" path="res://UI/dungeon_ui.tscn" id="2_7ve8u"]
 [ext_resource type="Texture2D" uid="uid://3x16w1q0fcv4" path="res://assets/dungeonmap.png" id="2_cs6h2"]
 [ext_resource type="PackedScene" uid="uid://b27muepwu4anj" path="res://Markers/player_marker.tscn" id="3_idwds"]
 [ext_resource type="Script" uid="uid://dr8mx3cs6yfpr" path="res://Scripts/mob_info.gd" id="4_el0rm"]
@@ -243,3 +244,7 @@ tile_set = SubResource("TileSet_cs6h2")
 
 [node name="PlayerMarker" parent="." instance=ExtResource("3_idwds")]
 position = Vector2(594, 462)
+
+[node name="UI" parent="." instance=ExtResource("2_7ve8u")]
+
+[connection signal="menu_change" from="UI" to="." method="_on_ui_menu_change"]

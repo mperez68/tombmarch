@@ -1,0 +1,456 @@
+[gd_scene load_steps=5 format=3 uid="uid://cypou16by8ik3"]
+
+[ext_resource type="Script" uid="uid://doy7ns6vb81ks" path="res://scripts/dungeon_ui.gd" id="1_yntf8"]
+[ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="2_rwprd"]
+[ext_resource type="Script" uid="uid://bo8khi7578nso" path="res://scripts/inventory.gd" id="3_5ntox"]
+[ext_resource type="PackedScene" uid="uid://c1p0bv38efl15" path="res://UI/sfx_manager.tscn" id="3_sa2yi"]
+
+[node name="DungeonController" type="CanvasLayer"]
+script = ExtResource("1_yntf8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_rwprd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ExitButton" type="Button" parent="Control/MarginContainer/Control"]
+layout_mode = 1
+offset_right = 8.0
+offset_bottom = 8.0
+text = "EXIT"
+
+[node name="Inventory" type="Control" parent="Control/MarginContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_5ntox")
+
+[node name="InventoryList" type="ItemList" parent="Control/MarginContainer/Control/Inventory"]
+custom_minimum_size = Vector2(300, 550)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -275.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+item_count = 3
+item_0/text = "Item"
+item_1/text = "Armor"
+item_2/text = "Weapon"
+
+[node name="ItemBox" type="Panel" parent="Control/MarginContainer/Control/Inventory"]
+custom_minimum_size = Vector2(300, 550)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -275.0
+offset_right = 300.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="UseButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+layout_mode = 2
+text = "Use"
+
+[node name="EquipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+layout_mode = 2
+text = "Equip"
+
+[node name="UnequipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+layout_mode = 2
+text = "Unequip"
+
+[node name="SellButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+layout_mode = 2
+text = "Sell"
+
+[node name="VFlowContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="ItemTitle" type="Label" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/VFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Name of Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+
+[node name="ItemOwner" type="Label" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/VFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Owner"
+horizontal_alignment = 1
+vertical_alignment = 3
+uppercase = true
+
+[node name="HSeparator2" type="HSeparator" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+
+[node name="ItemDescription" type="Label" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/VFlowContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "	Bacon ipsum dolor amet venison chislic kielbasa, leberkas short ribs buffalo fatback boudin doner.
+	Rump shankle kevin salami, pork shank meatloaf chicken. Landjaeger chuck meatball t-bone. Doner ham pastrami tail turducken picanha. Jerky beef venison hamburger.
+	Boudin chicken shankle drumstick short loin ball tip pastrami brisket ham hock buffalo tongue salami kielbasa tenderloin."
+autowrap_mode = 3
+tab_stops = PackedFloat32Array(24)
+
+[node name="Party" type="Control" parent="Control/MarginContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_5ntox")
+
+[node name="InventoryList" type="ItemList" parent="Control/MarginContainer/Control/Party"]
+custom_minimum_size = Vector2(300, 550)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -426.0
+offset_top = -275.0
+offset_right = -126.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+item_count = 6
+item_0/text = "Fighter"
+item_1/text = "Archer"
+item_2/text = "Wizard"
+item_3/text = "Rogue"
+item_4/text = "Cleric"
+item_5/text = "Ranger"
+
+[node name="ItemBox" type="Panel" parent="Control/MarginContainer/Control/Party"]
+custom_minimum_size = Vector2(300, 550)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -275.0
+offset_right = 374.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control/Party/ItemBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer"]
+layout_mode = 2
+
+[node name="VFlowContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="MemberTitle" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Name of CREATURE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+text = "STATS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="GridBorder7" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Str" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "STRENGTH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="StrVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder2" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="StrInc" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "+
+"
+
+[node name="GridBorder3" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Agi" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "AGILITY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder4" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="AgiVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder5" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="AgiInc" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+disabled = true
+text = "+
+"
+
+[node name="GridBorder6" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Int" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+text = "INTELLIGENCE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder8" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="IntVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder9" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="IntInc" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+disabled = true
+text = "+
+"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+text = "EQUIPMENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2"]
+layout_mode = 2
+columns = 6
+
+[node name="GridBorder7" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="Weap" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+text = "WEAPON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="WeapVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "FISTS"
+
+[node name="GridBorder2" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="UnequipWeaponButton2" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Unequip"
+
+[node name="GridBorder8" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="Armor" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+text = "ARMOR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder3" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="ArmorVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBorder4" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+layout_mode = 2
+
+[node name="UnequipArmorButton" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Unequip"
+
+[node name="HSeparator3" type="HSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+layout_mode = 2
+
+[node name="MemberDescription" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "	Bacon ipsum dolor amet venison chislic kielbasa, leberkas short ribs buffalo fatback boudin doner."
+autowrap_mode = 3
+tab_stops = PackedFloat32Array(24)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="InventoryButton" type="Button" parent="Control/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "INVENTORY"
+
+[node name="PartyButton" type="Button" parent="Control/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "PARTY"
+
+[node name="SfxManager" parent="." instance=ExtResource("3_sa2yi")]
+
+[connection signal="pressed" from="Control/MarginContainer/Control/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/InventoryButton" to="." method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/PartyButton" to="." method="_on_button_pressed" binds= [1]]
