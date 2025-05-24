@@ -38,7 +38,8 @@ func _on_move_timer_timeout() -> void:
 
 # Signals
 func _on_area_entered(area: Area2D) -> void:
-	if area is MapMarker and (area.mobs.size() > 0 or area.boss_mobs.size() > 0):
-		var temp = area.duplicate()
-		area.clear()
-		SceneManager.start_fight(temp)
+	if area is MapMarker:
+		if area.has_mobs():
+			area.fight()
+		elif area.has_loot():
+			area.take()

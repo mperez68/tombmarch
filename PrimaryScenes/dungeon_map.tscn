@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://lvv38j7aexcs"]
+[gd_scene load_steps=16 format=4 uid="uid://lvv38j7aexcs"]
 
 [ext_resource type="Script" uid="uid://dsu7cghvdnhur" path="res://Scripts/dungeon_map.gd" id="1_aroy7"]
 [ext_resource type="Texture2D" uid="uid://3x16w1q0fcv4" path="res://assets/dungeonmap.png" id="2_cs6h2"]
@@ -181,53 +181,37 @@ script = ExtResource("4_el0rm")
 type = 0
 metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
 
-[sub_resource type="Resource" id="Resource_j7yvs"]
+[sub_resource type="Resource" id="Resource_g5ckc"]
 script = ExtResource("4_el0rm")
 type = 0
 metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
+
+[sub_resource type="Resource" id="Resource_f388l"]
+script = ExtResource("5_0srt2")
+type = 0
+value = 5
+metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
 [sub_resource type="Resource" id="Resource_7ve8u"]
 script = ExtResource("4_el0rm")
 type = 1
 metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
 
-[sub_resource type="Resource" id="Resource_f388l"]
-script = ExtResource("5_0srt2")
-type = 0
-value = 0
-metadata/_custom_type_script = "uid://8adsdlcy2d0w"
-
-[sub_resource type="Resource" id="Resource_el0rm"]
-script = ExtResource("4_el0rm")
-type = 0
-metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
-
-[sub_resource type="Resource" id="Resource_mk3xh"]
-script = ExtResource("5_0srt2")
-type = 0
-value = 0
-metadata/_custom_type_script = "uid://8adsdlcy2d0w"
-
 [sub_resource type="Resource" id="Resource_1l082"]
 script = ExtResource("4_el0rm")
 type = 0
 metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
 
-[sub_resource type="Resource" id="Resource_g5ckc"]
-script = ExtResource("4_el0rm")
-type = 2
-metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
-
 [sub_resource type="Resource" id="Resource_fw6wo"]
 script = ExtResource("5_0srt2")
 type = 0
-value = 0
+value = 5
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
 [sub_resource type="Resource" id="Resource_axino"]
 script = ExtResource("5_0srt2")
 type = 1
-value = 0
+value = 1
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
 [node name="DungeonMap" type="Node2D"]
@@ -235,36 +219,21 @@ script = ExtResource("1_aroy7")
 
 [node name="Map" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAASAA0AAAAAAAEAAAASAA4AAAADAAEAAAASAA8AAAABAAEAAAASABAAAAADAAEAAAASABEAAAADAAIAAAASAAwAAAADAAEAAAASAAsAAAADAAEAAAASAAoAAAACAAEAAAASAAkAAAADAAAAAAAUAA8AAAACAAIAAAATAA8AAAABAAMAAAAUAA4AAAAAAAEAAAAUAA0AAAACAAAAAAATAA0AAAABAAMAAAAVAA4AAAACAAMAAAAQAA8AAAABAAIAAAAQAA4AAAADAAEAAAARAA8AAAABAAMAAAARAAoAAAAAAAMAAAAPAA8AAAAAAAMAAAAQAA0AAAACAAAAAAAPAA0AAAAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAASAA4AAAADAAIAAAASAA0AAAADAAEAAAASAAwAAAABAAEAAAASAAsAAAADAAEAAAASAAoAAAABAAEAAAATAAoAAAACAAMAAAASAAkAAAADAAEAAAASAAgAAAADAAEAAAASAAcAAAADAAAAAAARAAoAAAAAAAMAAAATAAwAAAACAAMAAAARAAwAAAAAAAMAAAA=")
 tile_set = SubResource("TileSet_cs6h2")
 
 [node name="RoomMarker" parent="." instance=ExtResource("4_yo208")]
-position = Vector2(593, 497)
-mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2"), SubResource("Resource_j7yvs")])
-
-[node name="RoomMarker5" parent="." instance=ExtResource("4_yo208")]
-position = Vector2(496, 497)
-mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2"), SubResource("Resource_7ve8u")])
-items = Array[ExtResource("5_0srt2")]([SubResource("Resource_f388l")])
-
-[node name="RoomMarker4" parent="." instance=ExtResource("4_yo208")]
-position = Vector2(495, 432)
-mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2"), SubResource("Resource_7ve8u")])
-
-[node name="RoomMarker3" parent="." instance=ExtResource("4_yo208")]
-position = Vector2(686, 463)
-mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2"), SubResource("Resource_7ve8u"), SubResource("Resource_el0rm")])
-items = Array[ExtResource("5_0srt2")]([SubResource("Resource_mk3xh")])
+position = Vector2(593, 399)
+mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2"), SubResource("Resource_g5ckc")])
+items = Array[Resource]([SubResource("Resource_f388l")])
 
 [node name="RoomMarker2" parent="." instance=ExtResource("4_yo208")]
-position = Vector2(560, 336)
+position = Vector2(591, 364)
 mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_0srt2"), SubResource("Resource_7ve8u"), SubResource("Resource_1l082")])
-boss_mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_g5ckc")])
 
 [node name="Treasure" parent="." instance=ExtResource("4_yo208")]
-position = Vector2(593, 304)
-icon = 0
-items = Array[ExtResource("5_0srt2")]([SubResource("Resource_fw6wo"), SubResource("Resource_axino")])
+position = Vector2(591, 429)
+items = Array[Resource]([SubResource("Resource_fw6wo"), SubResource("Resource_axino")])
 
 [node name="Concealment" type="TileMapLayer" parent="."]
 visible = false
@@ -273,4 +242,4 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAQAAAAAAAEAAAABAAQAAAAAAAIAAAABAAQ
 tile_set = SubResource("TileSet_cs6h2")
 
 [node name="PlayerMarker" parent="." instance=ExtResource("3_idwds")]
-position = Vector2(594, 560)
+position = Vector2(594, 462)

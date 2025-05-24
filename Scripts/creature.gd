@@ -137,5 +137,5 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		return
 	if anim_name != "idle" and status == Status.READY:
 		anim.play("idle")
-	elif anim_name != "idle_expended" and status == Status.EXPENDED:
+	elif anim_name != "idle_expended" and status == Status.EXPENDED and is_player:
 		anim.play("idle_expended")

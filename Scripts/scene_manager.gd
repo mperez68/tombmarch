@@ -16,4 +16,5 @@ func end_fight():
 
 func _end_fight():
 	fight_info = null
+	PlayerController.change_state(PlayerController.Select.DISABLED)
 	get_tree().call_deferred("change_scene_to_packed", dungeon)

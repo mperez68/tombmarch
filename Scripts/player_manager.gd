@@ -13,3 +13,7 @@ func generate() -> Array[Creature]:
 func save(party: Array[Creature]):
 	for i in party.size():
 		players[i].save(party[i])
+
+# TODO save to memory
+func save_game_state():
+	pass
