@@ -14,7 +14,8 @@ class_name InventoryView extends Control
 @onready var equip_button: Button = %EquipButton
 @onready var unequip_button: Button = %UnequipButton
 @onready var sell_button: Button = %SellButton
-@onready var player_select: PopupMenu = %PlayerSelect
+@onready var player_select: PopupMenu = %PlayerItemSelect
+@onready var all_player_select: PopupMenu = %AllPlayersSelect
 
 var selected_item: Resource
 var player_select_options: Array = []
@@ -39,6 +40,11 @@ func populate():
 		else:
 			counts.add_item(" ")
 		inventory.add_item(item.display_name())
+	all_player_select.clear()
+	all_player_select.size.x = 1
+	all_player_select.size.y = 1
+	for player in PlayerManager.players:
+		all_player_select.add_item(player.display_name)
 
 func remove(res: Resource):
 	ItemManager.remove(ItemManager.inventory.find(res))
@@ -70,17 +76,28 @@ func _on_use_button_pressed() -> void:
 		if selected_item.can_use([player]):
 			player_select.add_item(player.display_name)
 			player_select_options.push_back(player)
-	player_select.visible = true
+	player_select.show()
 
+## Only used for using an item.
 func _on_player_select_index_pressed(index: int) -> void:
 	selected_item.use([player_select_options[index]])
 	if selected_item.value <= 0:
 		remove(selected_item)
 	populate()
 
+## Only used for equiping an item.
+func _on_all_players_select_index_pressed(index: int) -> void:
+	selected_item.equip(PlayerManager.players[index])
+	populate()
+
 func _on_equip_button_pressed(equip: bool) -> void:
 	if selected_item is ItemInfo:
 		return
+	if equip:
+		all_player_select.show()
+	else:
+		selected_item.unequip()
+		populate()
 
 func _on_sell_button_pressed() -> void:
 	if selected_item is ItemInfo:

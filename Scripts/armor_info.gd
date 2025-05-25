@@ -54,3 +54,18 @@ func description() -> String:
 	ret += "\n\n"
 	ret += str("BLOCK: ", int(retrieve().block_chance * 100), "\n")
 	return ret
+
+func equip(player: PlayerInfo):
+	if is_instance_valid(item_owner):
+		item_owner.equipped_armor.unequip()
+	item_owner = player
+	
+	if is_instance_valid(player.equipped_armor):
+		player.equipped_armor.unequip()
+	player.equipped_armor = self
+
+func unequip():
+	if item_owner == null:
+		return
+	item_owner.equipped_armor = null
+	item_owner = null

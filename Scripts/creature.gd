@@ -14,6 +14,7 @@ signal expend_character
 @onready var anim = $AnimationPlayer
 @onready var panel = $CreaturePanel
 @onready var sfx = $SfxManager
+@onready var fists = $Fists
 
 @export var display_name: String = "CREATURE"
 @export var is_player: bool = false
@@ -40,6 +41,8 @@ func _ready() -> void:
 
 # Public
 func attack(target: Creature):
+	if !is_instance_valid(weapon):
+		weapon = fists
 	var temp = floating_label.instantiate()
 	temp.position = target.position - (temp.size / 2)
 	anim.play("attack")
@@ -59,6 +62,8 @@ func attack(target: Creature):
 		temp.text = "Miss"
 		sfx.play(sfx.Sfx.MISS)
 	add_sibling(temp)
+	if weapon == fists:
+		weapon = null
 
 func cast(target: Creature):
 	pass

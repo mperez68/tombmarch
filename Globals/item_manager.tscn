@@ -11,6 +11,12 @@ type = 0
 value = 300
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
+[sub_resource type="Resource" id="Resource_66dn6"]
+script = ExtResource("4_10egk")
+type = 1
+value = 2
+metadata/_custom_type_script = "uid://8adsdlcy2d0w"
+
 [sub_resource type="Resource" id="Resource_80g0y"]
 script = ExtResource("2_3g4cc")
 weapon_type = 0
@@ -27,12 +33,6 @@ level = 0
 enhancement = 0
 metadata/_custom_type_script = "uid://mekefqdhip6c"
 
-[sub_resource type="Resource" id="Resource_66dn6"]
-script = ExtResource("4_10egk")
-type = 1
-value = 2
-metadata/_custom_type_script = "uid://8adsdlcy2d0w"
-
 [node name="ItemManager" type="Node"]
 script = ExtResource("1_uh13p")
-inventory = Array[Resource]([SubResource("Resource_e5dng"), SubResource("Resource_80g0y"), SubResource("Resource_10egk"), SubResource("Resource_66dn6")])
+inventory = Array[Resource]([SubResource("Resource_e5dng"), SubResource("Resource_66dn6"), SubResource("Resource_80g0y"), SubResource("Resource_10egk")])

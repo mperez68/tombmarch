@@ -77,3 +77,18 @@ func description() -> String:
 	if retrieve().has_secondary_damage:
 		ret += str(", ", retrieve().min_secondary_damage, " - ", retrieve().max_secondary_damage, " ", Creature.Type.keys()[retrieve().secondary_type])
 	return ret
+
+func equip(player: PlayerInfo):
+	if is_instance_valid(item_owner):
+		item_owner.equipped_weapon.unequip()
+	item_owner = player
+	
+	if is_instance_valid(player.equipped_weapon):
+		player.equipped_weapon.unequip()
+	player.equipped_weapon = self
+
+func unequip():
+	if item_owner == null:
+		return
+	item_owner.equipped_weapon = null
+	item_owner = null
