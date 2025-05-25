@@ -46,11 +46,9 @@ func generate() -> Node:
 			ret.intelligence = intelligence
 	# Equipment
 	if is_instance_valid(equipped_weapon):
-		ret.weapon = equipped_weapon.generate()
-		ret.add_child(ret.weapon)
+		ret.weapon = equipped_weapon.retrieve()
 	if is_instance_valid(equipped_armor):
-		ret.armor = equipped_armor.generate()
-		ret.add_child(ret.armor)
+		ret.armor = equipped_armor.retrieve()
 	return ret
 
 func save(player: PlayerCreature) -> void:

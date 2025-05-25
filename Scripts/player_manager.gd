@@ -2,6 +2,15 @@ extends Node
 
 @export var players: Array[PlayerInfo]
 
+# Engine
+func _ready() -> void:
+	for player in players:
+		if is_instance_valid(player.equipped_weapon):
+			ItemManager.take([player.equipped_weapon])
+			player.equipped_weapon.item_owner = player
+		if is_instance_valid(player.equipped_armor):
+			ItemManager.take([player.equipped_armor])
+			player.equipped_armor.item_owner = player
 
 # Public
 func generate() -> Array[Creature]:

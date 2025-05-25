@@ -215,10 +215,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fd6ru"]
 size = Vector2(32, 32)
 
-[node name="Creature" type="Area2D" node_paths=PackedStringArray("weapon", "inventory")]
+[node name="Creature" type="Area2D" node_paths=PackedStringArray("weapon")]
 script = ExtResource("1_nugsn")
 weapon = NodePath("Fists")
-inventory = [null]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

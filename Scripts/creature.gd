@@ -27,8 +27,7 @@ var mp: int
 @export_range(0, MAX_STAT, 1, "hide_slider") var intelligence: int
 @export_group("Equipment")
 @export var weapon: Weapon
-@export var armor: Node
-@export var inventory: Array[Node] = []
+@export var armor: Armor
 
 var status: Status = Status.READY
 

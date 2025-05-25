@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cypou16by8ik3"]
+[gd_scene load_steps=6 format=3 uid="uid://cypou16by8ik3"]
 
-[ext_resource type="Script" uid="uid://doy7ns6vb81ks" path="res://scripts/dungeon_ui.gd" id="1_yntf8"]
+[ext_resource type="Script" uid="uid://doy7ns6vb81ks" path="res://Scripts/dungeon_ui.gd" id="1_yntf8"]
 [ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="2_rwprd"]
-[ext_resource type="Script" uid="uid://bo8khi7578nso" path="res://scripts/inventory.gd" id="3_5ntox"]
+[ext_resource type="Script" uid="uid://bo8khi7578nso" path="res://Scripts/inventory.gd" id="3_5ntox"]
 [ext_resource type="PackedScene" uid="uid://c1p0bv38efl15" path="res://UI/sfx_manager.tscn" id="3_sa2yi"]
+[ext_resource type="Script" uid="uid://3ulouh8x52qg" path="res://Scripts/party.gd" id="4_afep4"]
 
 [node name="DungeonController" type="CanvasLayer"]
 script = ExtResource("1_yntf8")
@@ -40,17 +41,20 @@ text = "EXIT"
 [node name="Inventory" type="Control" parent="Control/MarginContainer/Control"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+anchors_preset = 0
+offset_left = 568.0
+offset_top = 308.0
+offset_right = 568.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_5ntox")
 
-[node name="InventoryList" type="ItemList" parent="Control/MarginContainer/Control/Inventory"]
-custom_minimum_size = Vector2(300, 550)
+[node name="CountList" type="ItemList" parent="Control/MarginContainer/Control/Inventory"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(55, 550)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,6 +62,31 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
+offset_top = -275.0
+offset_right = -245.0
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_filter = 2
+item_count = 3
+item_0/text = "5"
+item_0/selectable = false
+item_1/text = "1"
+item_1/selectable = false
+item_2/text = "1"
+item_2/selectable = false
+
+[node name="InventoryList" type="ItemList" parent="Control/MarginContainer/Control/Inventory"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(245, 550)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
 offset_top = -275.0
 offset_bottom = 275.0
 grow_horizontal = 2
@@ -93,7 +122,7 @@ grow_vertical = 2
 [node name="Control" type="Control" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer"]
 layout_mode = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control"]
+[node name="ButtonContainer" type="HFlowContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -104,19 +133,23 @@ grow_vertical = 0
 alignment = 1
 last_wrap_alignment = 2
 
-[node name="UseButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+[node name="UseButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Use"
 
-[node name="EquipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+[node name="EquipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Equip"
 
-[node name="UnequipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+[node name="UnequipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Unequip"
 
-[node name="SellButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/HFlowContainer"]
+[node name="SellButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Sell"
 
@@ -165,14 +198,16 @@ tab_stops = PackedFloat32Array(24)
 [node name="Party" type="Control" parent="Control/MarginContainer/Control"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
+anchors_preset = 0
+offset_left = 568.0
+offset_top = 308.0
+offset_right = 568.0
+offset_bottom = 308.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("3_5ntox")
+script = ExtResource("4_afep4")
 
 [node name="InventoryList" type="ItemList" parent="Control/MarginContainer/Control/Party"]
 custom_minimum_size = Vector2(300, 550)
@@ -182,9 +217,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -426.0
+offset_left = -392.0
 offset_top = -275.0
-offset_right = -126.0
+offset_right = -92.0
 offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -205,9 +240,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -126.0
+offset_left = -92.0
 offset_top = -275.0
-offset_right = 374.0
+offset_right = 408.0
 offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -217,6 +252,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -452,5 +489,10 @@ text = "PARTY"
 [node name="SfxManager" parent="." instance=ExtResource("3_sa2yi")]
 
 [connection signal="pressed" from="Control/MarginContainer/Control/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="Control/MarginContainer/Control/Inventory/InventoryList" to="Control/MarginContainer/Control/Inventory" method="_on_inventory_list_item_selected"]
+[connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/UseButton" to="Control/MarginContainer/Control/Inventory" method="_on_use_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/EquipButton" to="Control/MarginContainer/Control/Inventory" method="_on_equip_button_pressed" binds= [true]]
+[connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/UnequipButton" to="Control/MarginContainer/Control/Inventory" method="_on_equip_button_pressed" binds= [false]]
+[connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/SellButton" to="Control/MarginContainer/Control/Inventory" method="_on_sell_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/InventoryButton" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/PartyButton" to="." method="_on_button_pressed" binds= [1]]

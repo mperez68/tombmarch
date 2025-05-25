@@ -13,6 +13,7 @@ func _on_button_pressed(action: Buttons) -> void:
 	match action:
 		Buttons.INVENTORY:
 			%Inventory.visible = !%Inventory.visible
+			%Inventory.populate()
 			%Party.visible = false
 			menu_change.emit(%Inventory.visible)
 		Buttons.PARTY:
