@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1jjmqdr2v23w"]
+
+[ext_resource type="PackedScene" uid="uid://bx2xdk0lnf34q" path="res://Spells/spell.tscn" id="1_a5ssn"]
+[ext_resource type="Script" uid="uid://dex6a5tu2a51q" path="res://scripts/heal.gd" id="2_f7h7q"]
+
+[node name="Heal" instance=ExtResource("1_a5ssn")]
+script = ExtResource("2_f7h7q")
+display_name = "HEAL"
+description = "Heals an ally for 3 hp."
+values = Array[int]([3])
+mana_cost = 2
+target_enemies = false
+target_allies = true

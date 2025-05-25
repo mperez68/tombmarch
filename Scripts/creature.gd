@@ -30,6 +30,8 @@ var mp: int
 @export_group("Equipment")
 @export var weapon: Weapon
 @export var armor: Armor
+@export_group("Magic")
+@export var spells: Array[SpellInfo]
 
 var status: Status = Status.READY
 
@@ -38,6 +40,8 @@ var status: Status = Status.READY
 func _ready() -> void:
 	anim.seek(randf_range(0,4))
 	panel.set_bars(self)
+	for spell in spells:
+		add_child(spell.retrieve())
 
 
 # Public
@@ -52,11 +56,11 @@ func attack(target: Creature):
 		if (is_crit):
 			temp.self_modulate = Color.RED
 		var dmg = weapon.get_damage(is_crit, _get_modifier())
-		target._damage(dmg, weapon.damage_type)
+		target.damage(dmg, weapon.damage_type)
 		temp.text = str(dmg)
 		if (weapon.has_secondary_damage):
 			var secondary_dmg = weapon.get_secondary_damage(is_crit, _get_modifier(false))
-			target._damage(secondary_dmg, weapon.damage_type)
+			target.damage(secondary_dmg, weapon.damage_type)
 			temp.text += str(" + ", secondary_dmg)
 		sfx.play(sfx.Sfx.HIT)
 	else:
@@ -77,11 +81,15 @@ func heal(value: int):
 	hp = min(hp + value, max_hp)
 	panel.set_hp(hp)
 
-func cast(target: Creature):
-	pass
+func cast(spell: Spell, targets: Array[Creature]):
+	anim.play("attack")
+	sfx.play(sfx.Sfx.SHOOT)
+	spell.cast(targets)
+	mp -= spell.mana_cost
+	panel.set_mp(mp)
 
-func use(target: Creature, item: String):
-	pass
+func restore(value: int):
+	pass	# TODO restore mana
 
 func run() -> bool:
 	return true
@@ -105,7 +113,7 @@ func reset():
 
 
 # Private
-func _damage(value: int, type: Type, mortal: bool = false):
+func damage(value: int, type: Type, mortal: bool = false):
 	if !mortal and armor != null and armor.block():
 		var temp = floating_label.instantiate()
 		temp.position = position - (temp.size / 2)

@@ -13,11 +13,11 @@ func use(args: Array = []) -> bool:
 		return false
 
 ## Override to determine if item is usable on given targets.
-func can_use(args: Array = []) -> bool:
+func can_use(_args: Array = []) -> bool:
 	return false
 
 
 # Private
 ## Override to determine what this item does with given arguments.
-func _use(args: Array = []) -> void:
+func _use(_args: Array = []) -> void:
 	print("no action")

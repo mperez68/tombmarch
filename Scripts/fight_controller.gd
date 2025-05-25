@@ -1,9 +1,10 @@
 class_name FightController extends CanvasLayer
 
-enum Actions{ ATTACK, CAST, ITEM, RUN }
+enum Actions{ ATTACK, SPELL, ITEM, RUN }
 
 @onready var sfx = $SfxManager
 @onready var item_selector = %ItemList
+@onready var spell_selector = %SpellList
 
 signal action_pressed(action: Actions)
 
@@ -21,9 +22,14 @@ func _on_action_button_pressed(action: Actions) -> void:
 	sfx.play(sfx.Sfx.CLICK)
 	item_selector.clear()
 	item_selector.hide()
+	spell_selector.clear()
+	spell_selector.hide()
 	match action:
 		Actions.ATTACK:
 			PlayerController.change_state(PlayerController.Select.TARGET, false, 1)
+		Actions.SPELL:
+			spell_selector.populate()
+			spell_selector.show()
 		Actions.ITEM:
 			item_selector.populate()
 			item_selector.show()

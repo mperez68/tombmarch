@@ -17,7 +17,7 @@ const ARMOR_DESC: Dictionary = {
 @export var enhancement: Enhancements
 
 var item_owner: PlayerInfo
-var reference: Armor
+var ref_pointer: Armor
 
 func generate() -> Node:
 	var ret: Armor = BASE_REFERENCES[armor_type].instantiate()
@@ -34,12 +34,12 @@ func generate() -> Node:
 	return ret
 
 func retrieve() -> Armor:
-	if !is_instance_valid(reference):
+	if !is_instance_valid(ref_pointer):
 		var ref = generate()
 		ItemManager.add_child(ref)
-		reference = ref
+		ref_pointer = ref
 
-	return reference
+	return ref_pointer
 
 func display_name() -> String:
 	if !armor_name.is_empty():

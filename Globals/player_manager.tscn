@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bha3sqhlplbav"]
+[gd_scene load_steps=15 format=3 uid="uid://bha3sqhlplbav"]
 
 [ext_resource type="Script" uid="uid://6weyyl0mlt8n" path="res://Scripts/player_manager.gd" id="1_y2kgy"]
 [ext_resource type="Script" uid="uid://3yx5kqngf1n7" path="res://Scripts/player_info.gd" id="2_q2eqt"]
 [ext_resource type="Script" uid="uid://mekefqdhip6c" path="res://Scripts/armor_info.gd" id="3_3s7hr"]
 [ext_resource type="Script" uid="uid://dshr3ojhu4w2b" path="res://Scripts/weapon_info.gd" id="3_nuiqv"]
+[ext_resource type="Script" uid="uid://dqcy7l3qtnar6" path="res://Scripts/spell_info.gd" id="5_brn22"]
 
 [sub_resource type="Resource" id="Resource_brn22"]
 script = ExtResource("3_3s7hr")
@@ -32,6 +33,7 @@ agility = 0
 intelligence = 0
 equipped_weapon = SubResource("Resource_nuiqv")
 equipped_armor = SubResource("Resource_brn22")
+spell_book = Array[ExtResource("5_brn22")]([])
 metadata/_custom_type_script = "uid://3yx5kqngf1n7"
 
 [sub_resource type="Resource" id="Resource_3s7hr"]
@@ -41,6 +43,12 @@ weapon_name = ""
 level = 0
 enhancement = 0
 metadata/_custom_type_script = "uid://dshr3ojhu4w2b"
+
+[sub_resource type="Resource" id="Resource_14xyb"]
+script = ExtResource("5_brn22")
+spell = 1
+level = 1
+metadata/_custom_type_script = "uid://dqcy7l3qtnar6"
 
 [sub_resource type="Resource" id="Resource_o8eim"]
 script = ExtResource("2_q2eqt")
@@ -52,6 +60,7 @@ strength = 0
 agility = 2
 intelligence = 0
 equipped_weapon = SubResource("Resource_3s7hr")
+spell_book = Array[ExtResource("5_brn22")]([SubResource("Resource_14xyb")])
 metadata/_custom_type_script = "uid://3yx5kqngf1n7"
 
 [sub_resource type="Resource" id="Resource_nqxrv"]
@@ -61,6 +70,12 @@ weapon_name = ""
 level = 0
 enhancement = 0
 metadata/_custom_type_script = "uid://dshr3ojhu4w2b"
+
+[sub_resource type="Resource" id="Resource_xnkd5"]
+script = ExtResource("5_brn22")
+spell = 0
+level = 1
+metadata/_custom_type_script = "uid://dqcy7l3qtnar6"
 
 [sub_resource type="Resource" id="Resource_ydc2d"]
 script = ExtResource("2_q2eqt")
@@ -72,6 +87,7 @@ strength = 0
 agility = 0
 intelligence = 2
 equipped_weapon = SubResource("Resource_nqxrv")
+spell_book = Array[ExtResource("5_brn22")]([SubResource("Resource_xnkd5")])
 metadata/_custom_type_script = "uid://3yx5kqngf1n7"
 
 [node name="PlayerManager" type="Node"]

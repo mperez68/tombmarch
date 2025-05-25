@@ -10,7 +10,7 @@ const ITEM_SCENES: Dictionary = {
 	Items.POTION: preload("res://Items/potion.tscn")
 }
 
-var reference: Item
+var ref_pointer: Item
 
 
 # Public
@@ -30,12 +30,12 @@ func generate() -> Node:
 	return ITEM_SCENES[type].instantiate()
 
 func retrieve() -> Item:
-	if !is_instance_valid(reference):
+	if !is_instance_valid(ref_pointer):
 		var ref = generate()
 		ItemManager.add_child(ref)
-		reference = ref
+		ref_pointer = ref
 
-	return reference
+	return ref_pointer
 
 func display_name() -> String:
 	return Items.keys()[type]

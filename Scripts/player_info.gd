@@ -20,6 +20,7 @@ const PLAYER_SCENES: Dictionary = {
 @export_group("Equipment")
 @export var equipped_weapon: WeaponInfo
 @export var equipped_armor: ArmorInfo
+@export var spell_book: Array[SpellInfo]
 
 var initialized: bool = false
 var hp: int
@@ -30,7 +31,7 @@ var inventory: Array[ItemInfo]
 
 
 # Public
-func generate() -> Node:
+func generate() -> PlayerCreature:
 	var ret: PlayerCreature = PLAYER_SCENES[player_class].instantiate()
 	# Initial data set
 	if initialized:
@@ -53,6 +54,7 @@ func generate() -> Node:
 		ret.weapon = equipped_weapon.retrieve()
 	if is_instance_valid(equipped_armor):
 		ret.armor = equipped_armor.retrieve()
+	ret.spells = spell_book.duplicate()
 	return ret
 
 func save(player: PlayerCreature) -> void:

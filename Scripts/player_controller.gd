@@ -11,6 +11,7 @@ var actor: Creature
 var targets: Array[Creature]
 var select_state: Select = Select.DISABLED
 var target_limit: int = 0
+var spell: Spell
 
 
 # Public
@@ -26,16 +27,19 @@ func select(target: Creature):
 				change_state(Select.ACTIVATED, false)
 				set_ui.emit(true)
 				change_actor.emit()
+				spell = null
 		Select.ACTIVATED:
 			if target.is_player and target.status == Creature.Status.READY:
 				actor = target
 				actor.anim.play("selected")
 				sfx.play(sfx.Sfx.DOUBLE_CLICK)
 				change_actor.emit()
+				spell = null
 		Select.TARGET:
 			if target.is_player:
-				change_state(Select.NO_ACTIVE, true)
-				select(target)
+				if !is_instance_valid(spell) or (is_instance_valid(spell) and !spell.target_allies):
+					change_state(Select.NO_ACTIVE, true)
+					select(target)
 			_select_targets(target)
 
 func clear():
@@ -59,16 +63,34 @@ func _select_targets(target: Creature):
 		targets.remove_at(targets.find(target))
 		target.select(false)
 		sfx.play(sfx.Sfx.CLICK)
-	elif targets.size() < target_limit and !target.is_player and !target.is_dead():
+	elif targets.size() < target_limit and _is_valid_target(target):
 		targets.push_front(target)
 		target.select(true)
 		# If limit reached, do action
 		if targets.size() == target_limit:
-			for t in targets:
-				actor.attack(t)	# TODO appropriate chosen action
+			if is_instance_valid(spell):
+				actor.cast(spell, targets)
+			else:
+				for t in targets:
+					actor.attack(t)
 			var temp = actor
 			change_state(Select.NO_ACTIVE)
 			set_ui.emit(false)
 			temp.expend()
 		else:
 			sfx.play(sfx.Sfx.CLICK)
+
+func _is_valid_target(target: Creature) -> bool:
+	if target.is_dead():
+		return false
+	# Spell
+	if is_instance_valid(spell):
+		if spell.target_enemies and !target.is_player:
+			return true
+		elif spell.target_allies and target.is_player:
+			return true
+		elif spell.target_self and target == actor:
+			return true
+		return false
+	# Attack
+	return !target.is_player

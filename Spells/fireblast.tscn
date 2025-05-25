@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://004hborlhysg"]
+
+[ext_resource type="PackedScene" uid="uid://bx2xdk0lnf34q" path="res://Spells/spell.tscn" id="1_jq4t7"]
+[ext_resource type="Script" uid="uid://c2ihqwrplgmhj" path="res://Scripts/fireblast.gd" id="2_kvjia"]
+
+[node name="Fireblast" instance=ExtResource("1_jq4t7")]
+script = ExtResource("2_kvjia")
+display_name = "Fire Blast"
+description = "Lob fire at the target, dealing 2 damage."
+values = Array[int]([2])

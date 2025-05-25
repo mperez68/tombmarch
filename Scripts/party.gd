@@ -4,7 +4,7 @@ extends Control
 
 @onready var title: Label = %MemberTitle
 
-@onready var str: Label = %StrVal
+@onready var stre: Label = %StrVal
 @onready var agi: Label = %AgiVal
 @onready var intel: Label = %IntVal
 @onready var str_button: Button = %StrInc
@@ -34,7 +34,7 @@ func populate() -> void:
 
 func clear() -> void:
 	title.text = " "
-	str.text = "--"
+	stre.text = "--"
 	agi.text = "--"
 	intel.text = "--"
 	str_button.disabled = true
@@ -52,7 +52,7 @@ func _on_player_list_item_selected(index: int) -> void:
 	clear()
 	selected_player = PlayerManager.players[index]
 	title.text =  selected_player.display_name
-	str.text = str(selected_player.strength + 10)
+	stre.text = str(selected_player.strength + 10)
 	agi.text = str(selected_player.agility + 10)
 	intel.text = str(selected_player.intelligence + 10)
 	if is_instance_valid(selected_player.equipped_weapon):

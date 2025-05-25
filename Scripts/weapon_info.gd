@@ -21,7 +21,7 @@ const WEAP_DESC: Dictionary = {
 @export var enhancement: Enhancements
 
 var item_owner: PlayerInfo
-var reference: Weapon
+var ref_pointer: Weapon
 
 # Public
 func generate() -> Node:
@@ -50,12 +50,12 @@ func generate() -> Node:
 #				has_seondary_damage, secondary_type, min_secondary_damage, max_secondary_damage
 
 func retrieve() -> Weapon:
-	if !is_instance_valid(reference):
+	if !is_instance_valid(ref_pointer):
 		var ref = generate()
 		ItemManager.add_child(ref)
-		reference = ref
+		ref_pointer = ref
 
-	return reference
+	return ref_pointer
 
 func display_name() -> String:
 	if !weapon_name.is_empty():
