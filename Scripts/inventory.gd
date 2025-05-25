@@ -17,7 +17,7 @@ class_name InventoryView extends Control
 @onready var player_select: PopupMenu = %PlayerItemSelect
 @onready var all_player_select: PopupMenu = %AllPlayersSelect
 
-var selected_item: Resource
+var selected_item: InventoryInfo
 var player_select_options: Array = []
 
 # Engine
@@ -46,7 +46,7 @@ func populate():
 	for player in PlayerManager.players:
 		all_player_select.add_item(player.display_name)
 
-func remove(res: Resource):
+func remove(res: InventoryInfo):
 	ItemManager.remove(ItemManager.inventory.find(res))
 
 # Private

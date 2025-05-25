@@ -1,4 +1,4 @@
-class_name ArmorInfo extends Resource
+class_name ArmorInfo extends InventoryInfo
 
 enum Armors{ SHIELD }
 enum Enhancements{ NONE, SPIKED }

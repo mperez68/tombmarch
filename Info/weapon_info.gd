@@ -1,4 +1,4 @@
-class_name WeaponInfo extends Resource
+class_name WeaponInfo extends InventoryInfo
 
 enum Weapons{ BOW, MACE, STAFF }
 enum Enhancements{ NONE, BURNING, BRUTAL }

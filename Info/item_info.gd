@@ -1,13 +1,14 @@
-class_name ItemInfo extends Resource
+class_name ItemInfo extends InventoryInfo
 
-enum Items{ GOLD, POTION }
+enum Items{ GOLD, POTION, ELIXIR }
 
 @export var type: Items
 @export_range(1, 1, 1, "or_greater") var value: int
 
 const ITEM_SCENES: Dictionary = {
 	Items.GOLD: preload("res://Items/gold.tscn"),
-	Items.POTION: preload("res://Items/potion.tscn")
+	Items.POTION: preload("res://Items/potion.tscn"),
+	Items.ELIXIR: preload("res://Items/elixir.tscn")
 }
 
 var ref_pointer: Item

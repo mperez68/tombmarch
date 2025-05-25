@@ -13,7 +13,7 @@ var state: Icon = Icon.FIGHT
 
 @export var mobs: Array[MobInfo]
 @export var boss_mobs: Array[MobInfo]
-@export var items: Array[Resource]
+@export var items: Array[InventoryInfo]
 
 # Engine
 func _ready() -> void:

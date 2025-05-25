@@ -1,10 +1,10 @@
 extends Node
 
 # group inventory
-@export var inventory: Array[Resource]
+@export var inventory: Array[InventoryInfo]
 
-func take(items_in: Array[Resource]):
-	var items: Array[Resource]
+func take(items_in: Array[InventoryInfo]):
+	var items: Array[InventoryInfo]
 	var hit = false
 	for item in items_in:
 		hit = false

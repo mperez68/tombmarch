@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dq8jg6njmugtr" path="res://Creatures/player_creature.tscn" id="1_xxhrx"]
 [ext_resource type="Texture2D" uid="uid://cbdu46oxqlk34" path="res://assets/sprites/wizard.png" id="2_34mad"]
 [ext_resource type="Script" uid="uid://d0pshon5h8xqn" path="res://Scripts/wizard.gd" id="2_xo1iy"]
-[ext_resource type="Script" uid="uid://dqcy7l3qtnar6" path="res://Scripts/spell_info.gd" id="3_ee5os"]
+[ext_resource type="Script" uid="uid://dqcy7l3qtnar6" path="res://Info/spell_info.gd" id="3_ee5os"]
 
 [sub_resource type="Resource" id="Resource_s3p87"]
 script = ExtResource("3_ee5os")

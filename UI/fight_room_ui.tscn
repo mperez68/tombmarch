@@ -57,14 +57,8 @@ text = "SPELLS"
 layout_mode = 2
 text = "ITEM"
 
-[node name="CoverButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
-layout_mode = 2
-disabled = true
-text = "COVER"
-
 [node name="RunButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
 layout_mode = 2
-disabled = true
 text = "RUN"
 
 [node name="ItemList" type="ItemList" parent="Control/MarginContainer/Control"]
@@ -118,8 +112,7 @@ text = "EXIT"
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/AttackButton" to="." method="_on_action_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/SpellsButton" to="." method="_on_action_button_pressed" binds= [1]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/ItemsButton" to="." method="_on_action_button_pressed" binds= [2]]
-[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/CoverButton" to="." method="_on_action_button_pressed" binds= [3]]
-[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/RunButton" to="." method="_on_action_button_pressed" binds= [4]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/RunButton" to="." method="_on_action_button_pressed" binds= [3]]
 [connection signal="item_selected" from="Control/MarginContainer/Control/ItemList" to="Control/MarginContainer/Control/ItemList" method="_on_item_selected"]
 [connection signal="item_selected" from="Control/MarginContainer/Control/SpellList" to="Control/MarginContainer/Control/SpellList" method="_on_item_selected"]
 [connection signal="pressed" from="Control/MarginContainer/Control/ExitButton" to="." method="_on_exit_button_pressed"]

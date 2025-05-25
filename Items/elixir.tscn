@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cchlm2yuw81p6"]
+
+[ext_resource type="PackedScene" uid="uid://bhyod4rk8yeb3" path="res://Items/item.tscn" id="1_c6l70"]
+[ext_resource type="Script" uid="uid://lk4xxddxcn5l" path="res://Scripts/elixir.gd" id="2_xpu4g"]
+
+[node name="Elixir" instance=ExtResource("1_c6l70")]
+script = ExtResource("2_xpu4g")
+description = ""

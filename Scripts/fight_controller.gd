@@ -33,6 +33,9 @@ func _on_action_button_pressed(action: Actions) -> void:
 		Actions.ITEM:
 			item_selector.populate()
 			item_selector.show()
+		Actions.RUN:
+			print("run")	# TODO
+			pass
 
 
 func _on_exit_button_pressed() -> void:
