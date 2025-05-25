@@ -6,6 +6,7 @@
 
 [node name="Goblin" node_paths=PackedStringArray("weapon") instance=ExtResource("1_dl46o")]
 script = ExtResource("2_u6mjv")
+exp_reward = 300
 max_hp = 3
 weapon = NodePath("Knife")
 

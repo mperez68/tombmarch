@@ -7,6 +7,7 @@
 
 [node name="Warboss" node_paths=PackedStringArray("weapon") instance=ExtResource("1_63hfa")]
 script = ExtResource("2_6xr1k")
+exp_reward = 2000
 weapon = NodePath("Poleaxe")
 
 [node name="Sprite2D" parent="." index="1"]

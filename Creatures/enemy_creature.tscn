@@ -6,3 +6,4 @@
 [node name="EnemyCreature" instance=ExtResource("1_2452g")]
 script = ExtResource("2_lm61s")
 is_boss = false
+exp_reward = 100

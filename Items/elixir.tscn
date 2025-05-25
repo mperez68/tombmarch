@@ -5,4 +5,6 @@
 
 [node name="Elixir" instance=ExtResource("1_c6l70")]
 script = ExtResource("2_xpu4g")
-description = ""
+description = "It bubbles despite being cool to the touch.
+
+Restores 3 MP."

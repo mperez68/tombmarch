@@ -51,7 +51,7 @@ func attack(target: Creature):
 	var temp = floating_label.instantiate()
 	temp.position = target.position - (temp.size / 2)
 	anim.play("attack")
-	if (weapon.get_hit(_get_modifier())):
+	if (weapon.get_hit(_get_modifier() - target.get_dodge())):
 		var is_crit = weapon.get_crit(agility)
 		if (is_crit):
 			temp.self_modulate = Color.RED
@@ -99,8 +99,8 @@ func restore(value: int):
 	mp = min(mp + value, max_mp)
 	panel.set_mp(mp)
 
-func run() -> bool:
-	return true
+func get_dodge() -> int:
+	return agility
 
 func is_dead() -> bool:
 	return hp <= 0

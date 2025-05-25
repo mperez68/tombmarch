@@ -95,7 +95,13 @@ func _has_living(list: Array) -> bool:
 	return false
 
 func _end_fight() -> void:
-	PlayerManager.save(creatures[Turn.PLAYER])
+	var exp_tot = 0
+	if SceneManager.fight_success:
+		for mob in creatures[Turn.MOBS]:
+			exp_tot += mob.exp_reward
+		for mob in creatures[Turn.BOSS]:
+			exp_tot += mob.exp_reward
+	PlayerManager.save(creatures[Turn.PLAYER], exp_tot)
 	SceneManager.end_fight()
 
 # Signal

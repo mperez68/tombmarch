@@ -5,6 +5,6 @@
 
 [node name="Gold" instance=ExtResource("1_n7mtp")]
 script = ExtResource("2_j4mfy")
-description = "We're Rich!
+description = "Gleaming, shining, gold pieces.
 
 Find a wandering merchant to trade for goods."

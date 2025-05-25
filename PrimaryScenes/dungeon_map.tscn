@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://lvv38j7aexcs"]
+[gd_scene load_steps=22 format=4 uid="uid://lvv38j7aexcs"]
 
 [ext_resource type="Script" uid="uid://dsu7cghvdnhur" path="res://Scripts/dungeon_map.gd" id="1_aroy7"]
 [ext_resource type="PackedScene" uid="uid://cypou16by8ik3" path="res://UI/dungeon_ui.tscn" id="2_7ve8u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b27muepwu4anj" path="res://Markers/player_marker.tscn" id="3_idwds"]
 [ext_resource type="Script" uid="uid://dr8mx3cs6yfpr" path="res://Info/mob_info.gd" id="4_7ve8u"]
 [ext_resource type="PackedScene" uid="uid://rjg2ent01j6p" path="res://Markers/room_marker.tscn" id="4_yo208"]
+[ext_resource type="Script" uid="uid://dgk3b4gy8y8sy" path="res://info/inventory_info.gd" id="5_1l082"]
 [ext_resource type="Script" uid="uid://dl7ue4cwde77d" path="res://Info/item_info.gd" id="5_7ve8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idwds"]
@@ -252,17 +253,17 @@ mobs = Array[ExtResource("4_7ve8u")]([SubResource("Resource_g5ckc"), SubResource
 [node name="RoomMarker2" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(591, 364)
 mobs = Array[ExtResource("4_7ve8u")]([SubResource("Resource_mk3xh"), SubResource("Resource_j7yvs"), SubResource("Resource_fs1pc")])
-items = Array[Resource]([SubResource("Resource_fn6o5"), SubResource("Resource_pnuh1")])
+items = Array[ExtResource("5_1l082")]([SubResource("Resource_fn6o5"), SubResource("Resource_pnuh1")])
 
 [node name="RoomMarker3" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(591, 304)
 mobs = Array[ExtResource("4_7ve8u")]([SubResource("Resource_mk3xh"), SubResource("Resource_j7yvs"), SubResource("Resource_fs1pc")])
 boss_mobs = Array[ExtResource("4_7ve8u")]([SubResource("Resource_hymgp")])
-items = Array[Resource]([SubResource("Resource_f388l")])
+items = Array[ExtResource("5_1l082")]([SubResource("Resource_f388l")])
 
 [node name="Treasure" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(591, 429)
-items = Array[Resource]([SubResource("Resource_axino"), SubResource("Resource_1l082")])
+items = Array[ExtResource("5_1l082")]([SubResource("Resource_axino"), SubResource("Resource_1l082")])
 
 [node name="Concealment" type="TileMapLayer" parent="."]
 visible = false
