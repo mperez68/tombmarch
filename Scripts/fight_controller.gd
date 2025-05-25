@@ -7,6 +7,7 @@ enum Actions{ ATTACK, SPELL, ITEM, RUN }
 @onready var spell_selector = %SpellList
 
 signal action_pressed(action: Actions)
+signal run
 
 # Engine
 func _ready() -> void:
@@ -34,8 +35,9 @@ func _on_action_button_pressed(action: Actions) -> void:
 			item_selector.populate()
 			item_selector.show()
 		Actions.RUN:
-			print("run")	# TODO
-			pass
+			if PlayerController.run():
+				SceneManager.fight_success = false
+				run.emit()
 
 
 func _on_exit_button_pressed() -> void:

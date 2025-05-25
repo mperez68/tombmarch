@@ -98,4 +98,5 @@ metadata/_edit_lock_ = true
 wait_time = 2.0
 one_shot = true
 
+[connection signal="run" from="UI" to="." method="_end_fight"]
 [connection signal="timeout" from="TurnPassTimer" to="." method="pass_turn"]

@@ -121,7 +121,7 @@ func reset():
 
 
 # Private
-func damage(value: int, type: Type, mortal: bool = false):
+func damage(value: int, _type: Type, mortal: bool = false):	# TODO type resistances
 	if !mortal and armor != null and armor.block():
 		var temp = floating_label.instantiate()
 		temp.position = position - (temp.size / 2)

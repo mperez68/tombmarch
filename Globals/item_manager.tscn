@@ -1,8 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://7i7kldekhndd"]
+[gd_scene load_steps=6 format=3 uid="uid://7i7kldekhndd"]
 
 [ext_resource type="Script" uid="uid://bev3ya0jwmxh0" path="res://Scripts/item_manager.gd" id="1_uh13p"]
-[ext_resource type="Script" uid="uid://dshr3ojhu4w2b" path="res://Info/weapon_info.gd" id="2_3g4cc"]
-[ext_resource type="Script" uid="uid://mekefqdhip6c" path="res://Info/armor_info.gd" id="3_80g0y"]
 [ext_resource type="Script" uid="uid://dl7ue4cwde77d" path="res://Info/item_info.gd" id="4_10egk"]
 
 [sub_resource type="Resource" id="Resource_e5dng"]
@@ -17,22 +15,12 @@ type = 1
 value = 2
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
-[sub_resource type="Resource" id="Resource_80g0y"]
-script = ExtResource("2_3g4cc")
-weapon_type = 0
-weapon_name = ""
-level = 0
-enhancement = 1
-metadata/_custom_type_script = "uid://dshr3ojhu4w2b"
-
-[sub_resource type="Resource" id="Resource_10egk"]
-script = ExtResource("3_80g0y")
-armor_type = 0
-armor_name = ""
-level = 0
-enhancement = 0
-metadata/_custom_type_script = "uid://mekefqdhip6c"
+[sub_resource type="Resource" id="Resource_3g4cc"]
+script = ExtResource("4_10egk")
+type = 2
+value = 0
+metadata/_custom_type_script = "uid://dl7ue4cwde77d"
 
 [node name="ItemManager" type="Node"]
 script = ExtResource("1_uh13p")
-inventory = Array[Resource]([SubResource("Resource_e5dng"), SubResource("Resource_66dn6"), SubResource("Resource_80g0y"), SubResource("Resource_10egk")])
+inventory = Array[Resource]([SubResource("Resource_e5dng"), SubResource("Resource_66dn6"), SubResource("Resource_3g4cc")])

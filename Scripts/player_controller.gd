@@ -48,6 +48,7 @@ func clear():
 	actor = null
 	targets.clear()
 
+## new_state, reset, new_limit
 func change_state(new_state: Select, reset: bool = true, new_limit: int = 0):
 	if reset:
 		clear()
@@ -55,6 +56,17 @@ func change_state(new_state: Select, reset: bool = true, new_limit: int = 0):
 	select_state = new_state
 	if new_state == Select.DISABLED:
 		set_ui.emit(false)
+
+func run(force_pass: bool = false) -> bool:
+	actor.expend()
+	var ret: bool = (float(actor.agility) / 10) + randf() < 0.5 or force_pass
+	if ret:
+		actor.anim.play("attack")
+		change_state(PlayerController.Select.DISABLED)
+	else:
+		actor.anim.play("damage")
+		change_state(PlayerController.Select.NO_ACTIVE, true)
+	return ret
 
 
 # Private

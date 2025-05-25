@@ -41,6 +41,9 @@ func _input(event: InputEvent) -> void:
 
 func _enter_tree() -> void:
 	MusicManager.play(MusicManager.Song.DUNGEON)
+	if SceneManager.fight_success and !SceneManager.pointer.is_empty():
+		get_node(SceneManager.pointer)._clear_mobs()
+	SceneManager.pointer = ""
 
 
 # Private

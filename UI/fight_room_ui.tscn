@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cfl8ktt67bejy" path="res://Scripts/fight_controller.gd" id="1_m6e0p"]
 [ext_resource type="PackedScene" uid="uid://c1p0bv38efl15" path="res://UI/sfx_manager.tscn" id="3_1cjj4"]
 [ext_resource type="Script" uid="uid://c4mexevbom4fi" path="res://Scripts/in_fight_item_list.gd" id="3_ytuys"]
-[ext_resource type="Script" uid="uid://oicwq4q3ov6a" path="res://scripts/spell_list.gd" id="4_1racq"]
+[ext_resource type="Script" uid="uid://oicwq4q3ov6a" path="res://Scripts/spell_list.gd" id="4_1racq"]
 
 [node name="FightController" type="CanvasLayer"]
 script = ExtResource("1_m6e0p")

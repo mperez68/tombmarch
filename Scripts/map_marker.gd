@@ -35,9 +35,7 @@ func has_loot() -> bool:
 	return !items.is_empty()
 
 func fight():
-	var temp = self.duplicate()
-	_clear_mobs()
-	SceneManager.start_fight(temp)
+	SceneManager.start_fight(self)
 
 func take(force_loot = false):
 	if force_loot or !has_mobs():

@@ -94,13 +94,15 @@ func _has_living(list: Array) -> bool:
 			return true
 	return false
 
+func _end_fight() -> void:
+	PlayerManager.save(creatures[Turn.PLAYER])
+	SceneManager.end_fight()
 
 # Signal
 func _check_turn():
 	# Check if fight is over
 	if !_has_living(creatures[Turn.PLAYER]) or (!_has_living(creatures[Turn.MOBS]) and !_has_living(creatures[Turn.BOSS])):
-		PlayerManager.save(creatures[Turn.PLAYER])
-		SceneManager.end_fight()
+		_end_fight()
 	
 	# Check if turn is over
 	for creature in creatures[active]:
