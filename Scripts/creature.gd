@@ -89,7 +89,15 @@ func cast(spell: Spell, targets: Array[Creature]):
 	panel.set_mp(mp)
 
 func restore(value: int):
-	pass	# TODO restore mana
+	var temp = floating_label.instantiate()
+	temp.position = position - (temp.size / 2)
+	anim.play("restore")
+	temp.text = str(value)
+	temp.self_modulate = Color(0.0, 0.0, 1.0)
+	sfx.play(sfx.Sfx.HEAL)
+	add_sibling(temp)
+	mp = min(mp + value, max_mp)
+	panel.set_mp(mp)
 
 func run() -> bool:
 	return true

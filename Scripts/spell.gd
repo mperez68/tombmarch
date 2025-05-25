@@ -21,5 +21,5 @@ func cast(targets: Array[Creature]) -> bool:
 	return false
 
 ## Override for spell effects.
-func _cast(targets: Array[Creature]) -> void:
+func _cast(_targets: Array[Creature]) -> void:
 	pass
