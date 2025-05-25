@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://g87bmm5uj5nv"]
+[gd_scene load_steps=5 format=3 uid="uid://g87bmm5uj5nv"]
 
 [ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="1_fyqef"]
 [ext_resource type="Script" uid="uid://cfl8ktt67bejy" path="res://Scripts/fight_controller.gd" id="1_m6e0p"]
 [ext_resource type="PackedScene" uid="uid://c1p0bv38efl15" path="res://UI/sfx_manager.tscn" id="3_1cjj4"]
+[ext_resource type="Script" uid="uid://c4mexevbom4fi" path="res://scripts/in_fight_item_list.gd" id="3_ytuys"]
 
 [node name="FightController" type="CanvasLayer"]
 script = ExtResource("1_m6e0p")
@@ -54,7 +55,6 @@ text = "SPELLS"
 
 [node name="ItemsButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
 layout_mode = 2
-disabled = true
 text = "ITEM"
 
 [node name="CoverButton" type="Button" parent="Control/MarginContainer/Control/ActionsMenu"]
@@ -66,6 +66,26 @@ text = "COVER"
 layout_mode = 2
 disabled = true
 text = "RUN"
+
+[node name="ItemList" type="ItemList" parent="Control/MarginContainer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -95.0
+offset_right = 150.0
+grow_vertical = 0
+allow_reselect = true
+auto_width = true
+auto_height = true
+item_count = 3
+item_0/text = "Item 1"
+item_1/text = "Item 2"
+item_2/text = "Item 3"
+script = ExtResource("3_ytuys")
 
 [node name="ExitButton" type="Button" parent="Control/MarginContainer/Control"]
 layout_mode = 1
@@ -80,4 +100,5 @@ text = "EXIT"
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/ItemsButton" to="." method="_on_action_button_pressed" binds= [2]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/CoverButton" to="." method="_on_action_button_pressed" binds= [3]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ActionsMenu/RunButton" to="." method="_on_action_button_pressed" binds= [4]]
+[connection signal="item_selected" from="Control/MarginContainer/Control/ItemList" to="Control/MarginContainer/Control/ItemList" method="_on_item_selected"]
 [connection signal="pressed" from="Control/MarginContainer/Control/ExitButton" to="." method="_on_exit_button_pressed"]

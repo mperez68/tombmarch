@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://lvv38j7aexcs"]
+[gd_scene load_steps=18 format=4 uid="uid://lvv38j7aexcs"]
 
 [ext_resource type="Script" uid="uid://dsu7cghvdnhur" path="res://Scripts/dungeon_map.gd" id="1_aroy7"]
 [ext_resource type="PackedScene" uid="uid://cypou16by8ik3" path="res://UI/dungeon_ui.tscn" id="2_7ve8u"]
@@ -203,6 +203,11 @@ type = 0
 value = 500
 metadata/_custom_type_script = "uid://8adsdlcy2d0w"
 
+[sub_resource type="Resource" id="Resource_mk3xh"]
+script = ExtResource("4_el0rm")
+type = 0
+metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
+
 [sub_resource type="Resource" id="Resource_fw6wo"]
 script = ExtResource("5_0srt2")
 type = 0
@@ -234,6 +239,7 @@ items = Array[Resource]([SubResource("Resource_f388l")])
 
 [node name="Treasure" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(591, 429)
+mobs = Array[ExtResource("4_el0rm")]([SubResource("Resource_mk3xh")])
 items = Array[Resource]([SubResource("Resource_fw6wo"), SubResource("Resource_axino")])
 
 [node name="Concealment" type="TileMapLayer" parent="."]

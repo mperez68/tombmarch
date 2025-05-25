@@ -1,6 +1,7 @@
 extends Node
 
 signal set_ui(visible: bool)
+signal change_actor
 
 enum Select{ DISABLED, NO_ACTIVE, ACTIVATED, TARGET }
 
@@ -24,11 +25,13 @@ func select(target: Creature):
 				sfx.play(sfx.Sfx.DOUBLE_CLICK)
 				change_state(Select.ACTIVATED, false)
 				set_ui.emit(true)
+				change_actor.emit()
 		Select.ACTIVATED:
 			if target.is_player and target.status == Creature.Status.READY:
 				actor = target
 				actor.anim.play("selected")
 				sfx.play(sfx.Sfx.DOUBLE_CLICK)
+				change_actor.emit()
 		Select.TARGET:
 			if target.is_player:
 				change_state(Select.NO_ACTIVE, true)

@@ -18,6 +18,7 @@ func _on_button_pressed(action: Buttons) -> void:
 			menu_change.emit(%Inventory.visible)
 		Buttons.PARTY:
 			%Party.visible = !%Party.visible
+			%Party.populate()
 			%Inventory.visible = false
 			menu_change.emit(%Party.visible)
 

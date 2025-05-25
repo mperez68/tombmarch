@@ -235,7 +235,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_afep4")
 
-[node name="InventoryList" type="ItemList" parent="Control/MarginContainer/Control/Party"]
+[node name="PlayerList" type="ItemList" parent="Control/MarginContainer/Control/Party"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 550)
 layout_mode = 1
 anchors_preset = 8
@@ -258,7 +259,7 @@ item_3/text = "Rogue"
 item_4/text = "Cleric"
 item_5/text = "Ranger"
 
-[node name="ItemBox" type="Panel" parent="Control/MarginContainer/Control/Party"]
+[node name="PlayerBox" type="Panel" parent="Control/MarginContainer/Control/Party"]
 custom_minimum_size = Vector2(300, 550)
 layout_mode = 1
 anchors_preset = 8
@@ -273,7 +274,7 @@ offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control/Party/ItemBox"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control/Party/PlayerBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -283,10 +284,10 @@ offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer"]
+[node name="Control" type="Control" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer"]
 layout_mode = 2
 
-[node name="VFlowContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control"]
+[node name="VFlowContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -294,7 +295,7 @@ offset_bottom = 50.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="MemberTitle" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="MemberTitle" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -303,35 +304,35 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="Label" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 layout_mode = 2
 text = "STATS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer"]
 layout_mode = 2
 columns = 6
 
-[node name="GridBorder7" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder7" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Str" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="Str" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 text = "STRENGTH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="StrVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="StrVal" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
@@ -339,29 +340,29 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder2" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder2" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="StrInc" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="StrInc" type="Button" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "+
 "
 
-[node name="GridBorder3" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder3" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Agi" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="Agi" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 text = "AGILITY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder4" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder4" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="AgiVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="AgiVal" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
@@ -369,10 +370,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder5" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder5" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="AgiInc" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="AgiInc" type="Button" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -380,19 +381,19 @@ disabled = true
 text = "+
 "
 
-[node name="GridBorder6" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder6" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Int" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="Int" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 text = "INTELLIGENCE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder8" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder8" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="IntVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="IntVal" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
@@ -400,10 +401,10 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder9" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="GridBorder9" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 layout_mode = 2
 
-[node name="IntInc" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
+[node name="IntInc" type="Button" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
@@ -411,62 +412,62 @@ disabled = true
 text = "+
 "
 
-[node name="HSeparator2" type="HSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="Label2" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 layout_mode = 2
 text = "EQUIPMENT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer2" type="CenterContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2"]
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2"]
 layout_mode = 2
 columns = 6
 
-[node name="GridBorder7" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="GridBorder7" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="Weap" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="Weap" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 text = "WEAPON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="GridBorder" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="WeapVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="WeapVal" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "FISTS"
 
-[node name="GridBorder2" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="GridBorder2" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="UnequipWeaponButton2" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="UnequipWeaponButton" type="Button" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "Unequip"
 
-[node name="GridBorder8" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="GridBorder8" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="Armor" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="Armor" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 text = "ARMOR"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder3" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="GridBorder3" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="ArmorVal" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="ArmorVal" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
@@ -474,19 +475,19 @@ text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridBorder4" type="VSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="GridBorder4" type="VSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 layout_mode = 2
 
-[node name="UnequipArmorButton" type="Button" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
+[node name="UnequipArmorButton" type="Button" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "Unequip"
 
-[node name="HSeparator3" type="HSeparator" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="HSeparator3" type="HSeparator" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 layout_mode = 2
 
-[node name="MemberDescription" type="Label" parent="Control/MarginContainer/Control/Party/ItemBox/MarginContainer/Control/VFlowContainer"]
+[node name="MemberDescription" type="Label" parent="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
@@ -494,7 +495,7 @@ text = "	Bacon ipsum dolor amet venison chislic kielbasa, leberkas short ribs bu
 autowrap_mode = 3
 tab_stops = PackedFloat32Array(24)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control"]
+[node name="ButtonContainer" type="HBoxContainer" parent="Control/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -504,11 +505,11 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="InventoryButton" type="Button" parent="Control/MarginContainer/Control/HBoxContainer"]
+[node name="InventoryButton" type="Button" parent="Control/MarginContainer/Control/ButtonContainer"]
 layout_mode = 2
 text = "INVENTORY"
 
-[node name="PartyButton" type="Button" parent="Control/MarginContainer/Control/HBoxContainer"]
+[node name="PartyButton" type="Button" parent="Control/MarginContainer/Control/ButtonContainer"]
 layout_mode = 2
 text = "PARTY"
 
@@ -522,5 +523,11 @@ text = "PARTY"
 [connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/SellButton" to="Control/MarginContainer/Control/Inventory" method="_on_sell_button_pressed"]
 [connection signal="index_pressed" from="Control/MarginContainer/Control/Inventory/PlayerItemSelect" to="Control/MarginContainer/Control/Inventory" method="_on_player_select_index_pressed"]
 [connection signal="index_pressed" from="Control/MarginContainer/Control/Inventory/AllPlayersSelect" to="Control/MarginContainer/Control/Inventory" method="_on_all_players_select_index_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/InventoryButton" to="." method="_on_button_pressed" binds= [0]]
-[connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/PartyButton" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="item_selected" from="Control/MarginContainer/Control/Party/PlayerList" to="Control/MarginContainer/Control/Party" method="_on_player_list_item_selected"]
+[connection signal="pressed" from="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer/StrInc" to="Control/MarginContainer/Control/Party" method="_on_stat_inc_pressed" binds= [0]]
+[connection signal="pressed" from="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer/AgiInc" to="Control/MarginContainer/Control/Party" method="_on_stat_inc_pressed" binds= [1]]
+[connection signal="pressed" from="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer/GridContainer/IntInc" to="Control/MarginContainer/Control/Party" method="_on_stat_inc_pressed" binds= [2]]
+[connection signal="pressed" from="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer/UnequipWeaponButton" to="Control/MarginContainer/Control/Party" method="_on_unequip_weapon_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer/UnequipArmorButton" to="Control/MarginContainer/Control/Party" method="_on_unequip_armor_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/Control/ButtonContainer/InventoryButton" to="." method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ButtonContainer/PartyButton" to="." method="_on_button_pressed" binds= [1]]

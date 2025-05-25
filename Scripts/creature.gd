@@ -17,6 +17,7 @@ signal expend_character
 @onready var fists = $Fists
 
 @export var display_name: String = "CREATURE"
+@export_multiline var description: String = "..."
 @export var is_player: bool = false
 @export_group("Stats")
 @export_range(1, 1, 1, "or_greater") var max_hp = 10
@@ -65,10 +66,18 @@ func attack(target: Creature):
 	if weapon == fists:
 		weapon = null
 
-func cast(target: Creature):
-	pass
+func heal(value: int):
+	var temp = floating_label.instantiate()
+	temp.position = position - (temp.size / 2)
+	anim.play("heal")
+	temp.text = str(value)
+	temp.self_modulate = Color(0.0, 1.0, 0.0)
+	sfx.play(sfx.Sfx.HEAL)
+	add_sibling(temp)
+	hp = min(hp + value, max_hp)
+	panel.set_hp(hp)
 
-func heal(target: Creature):
+func cast(target: Creature):
 	pass
 
 func use(target: Creature, item: String):
