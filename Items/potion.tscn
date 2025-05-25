@@ -1,7 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyo2ojvjcws75"]
 
 [ext_resource type="PackedScene" uid="uid://bhyod4rk8yeb3" path="res://Items/item.tscn" id="1_aferg"]
-[ext_resource type="Script" uid="uid://bq5vuudkmita6" path="res://scripts/potion.gd" id="2_kfbfs"]
+[ext_resource type="Script" uid="uid://bq5vuudkmita6" path="res://Scripts/potion.gd" id="2_kfbfs"]
 
 [node name="Potion" instance=ExtResource("1_aferg")]
 script = ExtResource("2_kfbfs")
+description = "With or without pulp?
+
+Restores 10 HP."

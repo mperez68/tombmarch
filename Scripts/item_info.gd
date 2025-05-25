@@ -10,19 +10,35 @@ const ITEM_SCENES: Dictionary = {
 	Items.POTION: preload("res://Items/potion.tscn")
 }
 
-const ITEM_DESC: Dictionary = {
-	Items.GOLD: "We're Rich!\n\nFind a wandering merchant to trade for goods.",
-	Items.POTION: "With or without pulp?\n\nRestores 10 HP."
-}
+var reference: Item
 
+
+# Public
 func usable() -> bool:
 	return type != Items.GOLD
 
+func use(args: Array = []) -> bool:
+	if usable() and retrieve().use(args):
+		value -= 1
+		return true
+	return false
+
+func can_use(args: Array = []) -> bool:
+	return retrieve().can_use(args)
+
 func generate() -> Node:
 	return ITEM_SCENES[type].instantiate()
+
+func retrieve() -> Item:
+	if !is_instance_valid(reference):
+		var ref = generate()
+		ItemManager.add_child(ref)
+		reference = ref
+
+	return reference
 
 func display_name() -> String:
 	return Items.keys()[type]
 
 func description() -> String:
-	return ITEM_DESC[type]
+	return retrieve().description

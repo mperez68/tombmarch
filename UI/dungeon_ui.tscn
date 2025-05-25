@@ -122,37 +122,6 @@ grow_vertical = 2
 [node name="Control" type="Control" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer"]
 layout_mode = 2
 
-[node name="ButtonContainer" type="HFlowContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-last_wrap_alignment = 2
-
-[node name="UseButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Use"
-
-[node name="EquipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Equip"
-
-[node name="UnequipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Unequip"
-
-[node name="SellButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Sell"
-
 [node name="VFlowContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 10
@@ -194,6 +163,50 @@ text = "	Bacon ipsum dolor amet venison chislic kielbasa, leberkas short ribs bu
 	Boudin chicken shankle drumstick short loin ball tip pastrami brisket ham hock buffalo tongue salami kielbasa tenderloin."
 autowrap_mode = 3
 tab_stops = PackedFloat32Array(24)
+
+[node name="ButtonContainer" type="HFlowContainer" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="UseButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Use"
+
+[node name="EquipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Equip"
+
+[node name="UnequipButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Unequip"
+
+[node name="SellButton" type="Button" parent="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sell"
+
+[node name="PlayerSelect" type="PopupMenu" parent="Control/MarginContainer/Control/Inventory"]
+unique_name_in_owner = true
+initial_position = 1
+size = Vector2i(75, 95)
+item_count = 3
+item_0/text = "Fighter"
+item_0/id = 0
+item_1/text = "Archer"
+item_1/id = 1
+item_2/text = "Wizard"
+item_2/id = 2
 
 [node name="Party" type="Control" parent="Control/MarginContainer/Control"]
 unique_name_in_owner = true
@@ -494,5 +507,6 @@ text = "PARTY"
 [connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/EquipButton" to="Control/MarginContainer/Control/Inventory" method="_on_equip_button_pressed" binds= [true]]
 [connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/UnequipButton" to="Control/MarginContainer/Control/Inventory" method="_on_equip_button_pressed" binds= [false]]
 [connection signal="pressed" from="Control/MarginContainer/Control/Inventory/ItemBox/MarginContainer/Control/ButtonContainer/SellButton" to="Control/MarginContainer/Control/Inventory" method="_on_sell_button_pressed"]
+[connection signal="index_pressed" from="Control/MarginContainer/Control/Inventory/PlayerSelect" to="Control/MarginContainer/Control/Inventory" method="_on_player_select_index_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/InventoryButton" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/MarginContainer/Control/HBoxContainer/PartyButton" to="." method="_on_button_pressed" binds= [1]]

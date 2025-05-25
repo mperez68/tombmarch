@@ -23,7 +23,9 @@ const PLAYER_SCENES: Dictionary = {
 
 var initialized: bool = false
 var hp: int
+var max_hp: int
 var mp: int
+var max_mp: int
 var inventory: Array[ItemInfo]
 
 
@@ -39,7 +41,9 @@ func generate() -> Node:
 		ret.intelligence = intelligence
 	else:
 		ret.hp = ret.max_hp
+		max_hp = ret.max_hp
 		ret.mp = ret.max_mp
+		max_mp = ret.max_mp
 		if strength != 0 or agility != 0 or intelligence != 0:
 			ret.strength = strength
 			ret.agility = agility

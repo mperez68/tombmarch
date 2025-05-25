@@ -17,3 +17,6 @@ func take(items_in: Array[Resource]):
 			items.push_back(item)
 	
 	inventory.append_array(items)
+
+func remove(index: int):
+	inventory.remove_at(index)

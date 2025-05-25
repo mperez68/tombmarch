@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7i7kldekhndd"]
+[gd_scene load_steps=9 format=3 uid="uid://7i7kldekhndd"]
 
 [ext_resource type="Script" uid="uid://bev3ya0jwmxh0" path="res://Scripts/item_manager.gd" id="1_uh13p"]
 [ext_resource type="Script" uid="uid://dshr3ojhu4w2b" path="res://Scripts/weapon_info.gd" id="2_3g4cc"]
@@ -27,6 +27,12 @@ level = 0
 enhancement = 0
 metadata/_custom_type_script = "uid://mekefqdhip6c"
 
+[sub_resource type="Resource" id="Resource_66dn6"]
+script = ExtResource("4_10egk")
+type = 1
+value = 2
+metadata/_custom_type_script = "uid://8adsdlcy2d0w"
+
 [node name="ItemManager" type="Node"]
 script = ExtResource("1_uh13p")
-inventory = Array[Resource]([SubResource("Resource_e5dng"), SubResource("Resource_80g0y"), SubResource("Resource_10egk")])
+inventory = Array[Resource]([SubResource("Resource_e5dng"), SubResource("Resource_80g0y"), SubResource("Resource_10egk"), SubResource("Resource_66dn6")])

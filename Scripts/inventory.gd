@@ -14,6 +14,10 @@ class_name InventoryView extends Control
 @onready var equip_button: Button = %EquipButton
 @onready var unequip_button: Button = %UnequipButton
 @onready var sell_button: Button = %SellButton
+@onready var player_select: PopupMenu = %PlayerSelect
+
+var selected_item: Resource
+var player_select_options: Array = []
 
 # Engine
 func _ready() -> void:
@@ -36,14 +40,19 @@ func populate():
 			counts.add_item(" ")
 		inventory.add_item(item.display_name())
 
+func remove(res: Resource):
+	ItemManager.remove(ItemManager.inventory.find(res))
 
 # Private
 ## Clears description box and disables all buttons.
 func _clear():
+	selected_item = null
+	player_select_options.clear()
 	i_title.text = "-"
 	i_owner.text = "-"
 	i_desc.text = ""
 	use_button.visible = false
+	use_button.disabled = false
 	equip_button.visible = false
 	unequip_button.visible = false
 	sell_button.visible = false
@@ -51,25 +60,48 @@ func _clear():
 
 # Signals
 func _on_use_button_pressed() -> void:
-	pass # Replace with function body.
+	if selected_item is not ItemInfo:
+		return
+	player_select.clear()
+	player_select.size.x = 1
+	player_select.size.y = 1
+	
+	for player in PlayerManager.players:
+		if selected_item.can_use([player]):
+			player_select.add_item(player.display_name)
+			player_select_options.push_back(player)
+	player_select.visible = true
+
+func _on_player_select_index_pressed(index: int) -> void:
+	selected_item.use([player_select_options[index]])
+	if selected_item.value <= 0:
+		remove(selected_item)
+	populate()
 
 func _on_equip_button_pressed(equip: bool) -> void:
-	pass # Replace with function body.
+	if selected_item is ItemInfo:
+		return
 
 func _on_sell_button_pressed() -> void:
-	pass # Replace with function body.
+	if selected_item is ItemInfo:
+		return
 
 func _on_inventory_list_item_selected(index: int) -> void:
 	_clear()
 	counts.select(index)
-	var item = ItemManager.inventory[index]
-	i_title.text = item.display_name()
-	if (item is WeaponInfo or item is ArmorInfo) and is_instance_valid(item.item_owner):
-		i_owner.text = item.item_owner.display_name
-	i_desc.text = item.description()
-	if item is ItemInfo:
-		use_button.visible = item.usable()
+	selected_item = ItemManager.inventory[index]
+	i_title.text = selected_item.display_name()
+	if (selected_item is WeaponInfo or selected_item is ArmorInfo) and is_instance_valid(selected_item.item_owner):
+		i_owner.text = selected_item.item_owner.display_name
+	i_desc.text = selected_item.description()
+	if selected_item is ItemInfo:
+		use_button.visible = selected_item.usable()
+		use_button.disabled = true
+		for player in PlayerManager.players:
+			if selected_item.can_use([player]):
+				use_button.disabled = false
+				break
 	else:
 		equip_button.visible = true
-		if is_instance_valid(item.item_owner):
+		if is_instance_valid(selected_item.item_owner):
 			unequip_button.visible = true
