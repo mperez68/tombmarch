@@ -3,16 +3,19 @@ extends Node2D
 @onready var grid = $Map
 @onready var conceal_grid = $Concealment
 @onready var player: PlayerMarker = $PlayerMarker
+@onready var ui: DungeonController = $UI
 
 var menu_open: bool = false
 
 # Engine
 func _ready() -> void:
 	conceal_grid.visible = true
+	if SceneManager.can_leave:
+		ui.activate_leave()
 	
 	# Center markers
 	for child in get_children():
-		if child is Marker:
+		if child is MapMarker:
 			child.grid = grid
 			child.conceal_grid = conceal_grid
 			child.grid_position = grid.local_to_map(child.position / grid.scale)

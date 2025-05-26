@@ -4,6 +4,7 @@ var pointer: NodePath
 var fight_info: MapMarker
 var dungeon: PackedScene = PackedScene.new()
 var fight_success: bool = true
+var can_leave: bool = false
 
 @onready var delay: Timer = $ChangeDelay
 
@@ -20,5 +21,13 @@ func end_fight():
 	PlayerController.change_state(PlayerController.Select.DISABLED)
 	delay.start()
 
+func start_dungeon():
+	get_tree().call_deferred("change_scene_to_file", "res://PrimaryScenes/dungeon_map.tscn")	# TODO previous party select screen
+
+func end_dungeon():
+	get_tree().quit()	# TODO return to upper level
+
+
+# Private
 func _end_fight():
 	get_tree().call_deferred("change_scene_to_packed", dungeon)

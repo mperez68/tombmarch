@@ -638,6 +638,12 @@ text = "INVENTORY"
 layout_mode = 2
 text = "PARTY"
 
+[node name="LeaveButton" type="Button" parent="Control/MarginContainer/Control/ButtonContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "LEAVE DUNGEON"
+
 [node name="SfxManager" parent="." instance=ExtResource("3_sa2yi")]
 
 [connection signal="pressed" from="Control/MarginContainer/Control/ExitButton" to="." method="_on_exit_button_pressed"]
@@ -656,3 +662,4 @@ text = "PARTY"
 [connection signal="pressed" from="Control/MarginContainer/Control/Party/PlayerBox/MarginContainer/Control/VFlowContainer/CenterContainer2/GridContainer/UnequipArmorButton" to="Control/MarginContainer/Control/Party" method="_on_unequip_armor_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/Control/ButtonContainer/InventoryButton" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Control/MarginContainer/Control/ButtonContainer/PartyButton" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="Control/MarginContainer/Control/ButtonContainer/LeaveButton" to="." method="_on_button_pressed" binds= [2]]

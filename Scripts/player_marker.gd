@@ -1,4 +1,4 @@
-class_name PlayerMarker extends Marker
+class_name PlayerMarker extends MapMarker
 
 signal position_updated(new_grid_position: Vector2i)
 
