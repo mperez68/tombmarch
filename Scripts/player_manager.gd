@@ -22,6 +22,21 @@ func set_party(new_party: Array[PlayerInfo]):
 	players = new_party.duplicate()
 	_ready()
 
+func add_all_to_party(players: Array[PlayerInfo]):
+	for player in players:
+		add_to_party(player)
+
+func add_to_party(player: PlayerInfo):
+	player.init()
+	player.level_up.connect(_on_level_up)
+	if is_instance_valid(player.equipped_weapon):
+		ItemManager.take([player.equipped_weapon])
+		player.equipped_weapon.item_owner = player
+	if is_instance_valid(player.equipped_armor):
+		ItemManager.take([player.equipped_armor])
+		player.equipped_armor.item_owner = player
+	players.push_back(player)
+
 func generate() -> Array[Creature]:
 	var ret: Array[Creature] = []
 	for player in players:

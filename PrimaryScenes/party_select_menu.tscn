@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://tnmht4os7e36"]
 
 [ext_resource type="Theme" uid="uid://d07uvqy4uuw8q" path="res://assets/ingametheme.tres" id="1_gfqhk"]
-[ext_resource type="Script" uid="uid://myovxv8mnrn3" path="res://scripts/party_select_menu.gd" id="2_1icr5"]
+[ext_resource type="Script" uid="uid://myovxv8mnrn3" path="res://Scripts/party_select_menu.gd" id="2_1icr5"]
 [ext_resource type="PackedScene" uid="uid://bmt4lmdjvgu2y" path="res://Creatures/creature.tscn" id="3_y2uym"]
 
 [node name="PartySelectMenu" type="Control"]

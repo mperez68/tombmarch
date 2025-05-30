@@ -41,6 +41,7 @@ func _on_move_timer_timeout() -> void:
 # Signals
 func _on_area_entered(area: Area2D) -> void:
 	if area is MapMarker:
+		area.add_players_to_party()
 		if area.has_mobs():
 			area.fight()
 		elif area.has_loot():

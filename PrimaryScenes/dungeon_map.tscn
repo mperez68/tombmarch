@@ -1,13 +1,17 @@
-[gd_scene load_steps=15 format=4 uid="uid://lvv38j7aexcs"]
+[gd_scene load_steps=24 format=4 uid="uid://lvv38j7aexcs"]
 
 [ext_resource type="Script" uid="uid://dsu7cghvdnhur" path="res://Scripts/dungeon_map.gd" id="1_aroy7"]
 [ext_resource type="PackedScene" uid="uid://cypou16by8ik3" path="res://UI/dungeon_ui.tscn" id="2_7ve8u"]
 [ext_resource type="Texture2D" uid="uid://3x16w1q0fcv4" path="res://assets/dungeonmap.png" id="2_cs6h2"]
 [ext_resource type="PackedScene" uid="uid://b27muepwu4anj" path="res://Markers/player_marker.tscn" id="3_idwds"]
 [ext_resource type="Script" uid="uid://dr8mx3cs6yfpr" path="res://Info/mob_info.gd" id="4_7ve8u"]
+[ext_resource type="Script" uid="uid://3yx5kqngf1n7" path="res://Info/player_info.gd" id="4_f388l"]
 [ext_resource type="PackedScene" uid="uid://rjg2ent01j6p" path="res://Markers/room_marker.tscn" id="4_yo208"]
 [ext_resource type="Script" uid="uid://dgk3b4gy8y8sy" path="res://Info/inventory_info.gd" id="5_1l082"]
 [ext_resource type="Script" uid="uid://dl7ue4cwde77d" path="res://Info/item_info.gd" id="5_7ve8u"]
+[ext_resource type="Script" uid="uid://mekefqdhip6c" path="res://Info/armor_info.gd" id="5_mk3xh"]
+[ext_resource type="Script" uid="uid://dshr3ojhu4w2b" path="res://Info/weapon_info.gd" id="6_j7yvs"]
+[ext_resource type="Script" uid="uid://dqcy7l3qtnar6" path="res://Info/spell_info.gd" id="7_fs1pc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idwds"]
 texture = ExtResource("2_cs6h2")
@@ -178,10 +182,37 @@ terrain_set_0/terrain_1/name = "Concealment"
 terrain_set_0/terrain_1/color = Color(0.144063, 0.144063, 0.144063, 1)
 sources/0 = SubResource("TileSetAtlasSource_idwds")
 
-[sub_resource type="Resource" id="Resource_axino"]
-script = ExtResource("4_7ve8u")
-type = 0
-metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
+[sub_resource type="Resource" id="Resource_fn6o5"]
+script = ExtResource("5_mk3xh")
+armor_type = 0
+armor_name = ""
+level = 0
+enhancement = 0
+metadata/_custom_type_script = "uid://mekefqdhip6c"
+
+[sub_resource type="Resource" id="Resource_pnuh1"]
+script = ExtResource("6_j7yvs")
+weapon_type = 1
+weapon_name = ""
+gold_value = 0
+level = 0
+enhancement = 0
+metadata/_custom_type_script = "uid://dshr3ojhu4w2b"
+
+[sub_resource type="Resource" id="Resource_hymgp"]
+script = ExtResource("4_f388l")
+display_name = "Axel"
+player_class = 0
+experience_level = 1
+experience = 0
+strength = 2
+agility = 0
+intelligence = 0
+available_stat_points = 0
+equipped_weapon = SubResource("Resource_pnuh1")
+equipped_armor = SubResource("Resource_fn6o5")
+spell_book = Array[ExtResource("7_fs1pc")]([])
+metadata/_custom_type_script = "uid://3yx5kqngf1n7"
 
 [sub_resource type="Resource" id="Resource_f388l"]
 script = ExtResource("4_7ve8u")
@@ -199,6 +230,35 @@ script = ExtResource("4_7ve8u")
 type = 0
 metadata/_custom_type_script = "uid://dr8mx3cs6yfpr"
 
+[sub_resource type="Resource" id="Resource_mk3xh"]
+script = ExtResource("6_j7yvs")
+weapon_type = 2
+weapon_name = ""
+gold_value = 0
+level = 0
+enhancement = 1
+metadata/_custom_type_script = "uid://dshr3ojhu4w2b"
+
+[sub_resource type="Resource" id="Resource_j7yvs"]
+script = ExtResource("7_fs1pc")
+spell = 0
+level = 1
+metadata/_custom_type_script = "uid://dqcy7l3qtnar6"
+
+[sub_resource type="Resource" id="Resource_fs1pc"]
+script = ExtResource("4_f388l")
+display_name = "Oswald"
+player_class = 2
+experience_level = 2
+experience = 0
+strength = 0
+agility = 0
+intelligence = 2
+available_stat_points = 0
+equipped_weapon = SubResource("Resource_mk3xh")
+spell_book = Array[ExtResource("7_fs1pc")]([SubResource("Resource_j7yvs")])
+metadata/_custom_type_script = "uid://3yx5kqngf1n7"
+
 [node name="DungeonMap" type="Node2D"]
 script = ExtResource("1_aroy7")
 
@@ -209,8 +269,7 @@ tile_set = SubResource("TileSet_cs6h2")
 
 [node name="RoomMarker2" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(594, 401)
-mobs = Array[ExtResource("4_7ve8u")]([SubResource("Resource_axino")])
-final_fight = true
+player_mobs = Array[ExtResource("4_f388l")]([SubResource("Resource_hymgp")])
 
 [node name="RoomMarker4" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(595, 370)
@@ -220,6 +279,8 @@ items = Array[ExtResource("5_1l082")]([SubResource("Resource_g5ckc")])
 [node name="RoomMarker3" parent="." instance=ExtResource("4_yo208")]
 position = Vector2(598, 337)
 boss_mobs = Array[ExtResource("4_7ve8u")]([SubResource("Resource_fw6wo")])
+player_mobs = Array[ExtResource("4_f388l")]([SubResource("Resource_fs1pc")])
+final_fight = true
 
 [node name="Concealment" type="TileMapLayer" parent="."]
 visible = false

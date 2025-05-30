@@ -17,6 +17,7 @@ var state: Icon = Icon.NONE
 @export var mobs: Array[MobInfo]
 @export var boss_mobs: Array[MobInfo]
 @export var items: Array[InventoryInfo]
+@export var player_mobs: Array[PlayerInfo]
 @export var final_fight: bool = false
 
 # Engine
@@ -31,6 +32,9 @@ func _ready() -> void:
 	else:
 		if has_loot():
 			_change_type(Icon.TREASURE)
+		elif !player_mobs.is_empty():
+			# TODO icon for player pickup
+			_change_type(Icon.COMPLETED_BOSS_FIGHT)
 		else:
 			queue_free()
 
@@ -52,6 +56,12 @@ func take(force_loot = false):
 	if force_loot or !has_mobs():
 		ItemManager.take(items.duplicate())
 		_clear_items()
+
+func add_players_to_party():
+	if !player_mobs.is_empty():
+		print("Adding players to party: ", player_mobs)	# TODO display warning
+		PlayerManager.add_all_to_party(player_mobs)
+		player_mobs.clear()
 
 
 # Private
