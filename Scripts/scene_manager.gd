@@ -25,7 +25,7 @@ func start_dungeon():
 	get_tree().call_deferred("change_scene_to_file", "res://PrimaryScenes/dungeon_map.tscn")	# TODO previous party select screen
 
 func end_dungeon():
-	get_tree().quit()	# TODO return to upper level
+	get_tree().call_deferred("change_scene_to_file", "res://PrimaryScene/party_select_menu.tscn")
 
 
 # Private

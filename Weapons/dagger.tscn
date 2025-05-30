@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1h72pulfubrd"]
+
+[ext_resource type="PackedScene" uid="uid://btqtt68efxryv" path="res://Weapons/weapon.tscn" id="1_fees6"]
+
+[node name="Dagger" instance=ExtResource("1_fees6")]
+weapon_name = "DAGGER"
+primary_stat = 1
+damage_type = 1

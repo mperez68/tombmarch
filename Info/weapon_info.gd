@@ -1,22 +1,25 @@
 class_name WeaponInfo extends InventoryInfo
 
-enum Weapons{ BOW, MACE, STAFF }
+enum Weapons{ BOW, MACE, STAFF, DAGGER }
 enum Enhancements{ NONE, BURNING, BRUTAL }
 
 const BASE_REFERENCES: Dictionary = {
 	Weapons.BOW: preload("res://Weapons/bow.tscn"),
 	Weapons.MACE: preload("res://Weapons/mace.tscn"),
-	Weapons.STAFF: preload("res://Weapons/staff.tscn")
+	Weapons.STAFF: preload("res://Weapons/staff.tscn"),
+	Weapons.DAGGER: preload("res://Weapons/dagger.tscn")
 }
 
 const WEAP_DESC: Dictionary = {
-	Weapons.BOW: "It goes twang!",
-	Weapons.MACE: "It goes bonk!",
-	Weapons.STAFF: "It goes whoosh!"
+	Weapons.BOW: "Drawn inward by a taut string, a wooden arch capable of shooting an arrow with lethal force.",
+	Weapons.MACE: "A heavy club with a solid steel head, able to crush your foes with a fell swing.",
+	Weapons.STAFF: "An enchanted stave, wielding arcane power unseen to the naked eye.",
+	Weapons.DAGGER: "A simple shiv, barely able to break skin."
 }
 
 @export var weapon_type: Weapons
 @export var weapon_name: String
+@export_range(0, 1, 1, "hide_slider", "or_greater") var gold_value: int
 @export_range(0, 3) var level: int
 @export var enhancement: Enhancements
 

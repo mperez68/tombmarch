@@ -17,6 +17,11 @@ func _ready() -> void:
 			player.equipped_armor.item_owner = player
 
 # Public
+func set_party(new_party: Array[PlayerInfo]):
+	players.clear()
+	players = new_party.duplicate()
+	_ready()
+
 func generate() -> Array[Creature]:
 	var ret: Array[Creature] = []
 	for player in players:

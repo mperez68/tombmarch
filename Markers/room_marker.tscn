@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://rjg2ent01j6p"]
 
-[ext_resource type="Script" uid="uid://cd32u1vgsy37x" path="res://scripts/room_marker.gd" id="1_rcxk6"]
+[ext_resource type="Script" uid="uid://cd32u1vgsy37x" path="res://Scripts/room_marker.gd" id="1_rcxk6"]
 [ext_resource type="Texture2D" uid="uid://chvheyrnj6cwy" path="res://assets/sprites/mapicons.png" id="2_oa2y2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo208"]

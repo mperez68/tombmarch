@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b27muepwu4anj" path="res://Markers/player_marker.tscn" id="3_idwds"]
 [ext_resource type="Script" uid="uid://dr8mx3cs6yfpr" path="res://Info/mob_info.gd" id="4_7ve8u"]
 [ext_resource type="PackedScene" uid="uid://rjg2ent01j6p" path="res://Markers/room_marker.tscn" id="4_yo208"]
-[ext_resource type="Script" uid="uid://dgk3b4gy8y8sy" path="res://info/inventory_info.gd" id="5_1l082"]
+[ext_resource type="Script" uid="uid://dgk3b4gy8y8sy" path="res://Info/inventory_info.gd" id="5_1l082"]
 [ext_resource type="Script" uid="uid://dl7ue4cwde77d" path="res://Info/item_info.gd" id="5_7ve8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idwds"]
